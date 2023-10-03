@@ -1,0 +1,67 @@
+stages:
+  - build
+  - release
+
+build-docker-images:
+  stage: build
+  image: docker:24.0.6-dind
+  services:
+    - docker:24.0.6-dind
+  variables:
+    DOCKER_TLS_CERTDIR: ""
+  before_script:
+    - until docker info; do sleep 1; done
+    - docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD}
+  script:
+    - >
+      docker build
+      --file openms/docker/Dockerfile_mongodb
+      --tag ${CI_REGISTRY_USER}/open5gs-mongodb:${CI_COMMIT_SHORT_SHA} 
+      .
+    - >
+      docker build
+      --file docker/webui/Dockerfile
+      --tag ${CI_REGISTRY_USER}/open5gs-webui:${CI_COMMIT_SHORT_SHA}
+      .
+    - >
+      docker build
+      --file docker/ubuntu/latest/base/Dockerfile
+      --tag ${CI_REGISTRY_USER}/ubuntu-latest-open5gs-base
+      .
+    - >
+      docker build
+      --build-arg username=${CI_REGISTRY_USER}
+      --file docker/build/Dockerfile
+      --tag ${CI_REGISTRY_USER}/open5gs:${CI_COMMIT_SHORT_SHA}
+      . 
+    - docker push ${CI_REGISTRY_USER}/open5gs-mongodb:${CI_COMMIT_SHORT_SHA}
+    - docker push ${CI_REGISTRY_USER}/open5gs-webui:${CI_COMMIT_SHORT_SHA}
+    - docker push ${CI_REGISTRY_USER}/open5gs:${CI_COMMIT_SHORT_SHA}
+
+upload-docker-image-latest:
+  stage: release
+  variables:
+    GIT_STRATEGY: none
+  image: docker:24.0.6-dind
+  services:
+    - docker:24.0.6-dind
+  variables:
+    DOCKER_TLS_CERTDIR: ""
+  when: on_success
+  before_script:
+    - until docker info; do sleep 1; done
+    - docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD}
+  script:
+    - | 
+      docker pull ${CI_REGISTRY_USER}/open5gs-mongodb:${CI_COMMIT_SHORT_SHA}
+      docker tag ${CI_REGISTRY_USER}/open5gs-mongodb:${CI_COMMIT_SHORT_SHA} ${CI_REGISTRY_USER}/open5gs-mongodb:latest
+      docker push ${CI_REGISTRY_USER}/open5gs-mongodb:latest
+    - |
+      docker pull ${CI_REGISTRY_USER}/open5gs-webui:${CI_COMMIT_SHORT_SHA}
+      docker tag ${CI_REGISTRY_USER}/open5gs-webui:${CI_COMMIT_SHORT_SHA} ${CI_REGISTRY_USER}/open5gs-webui:latest
+      docker push ${CI_REGISTRY_USER}/open5gs-webui:latest
+    - |
+      docker pull ${CI_REGISTRY_USER}/open5gs:${CI_COMMIT_SHORT_SHA}
+      docker tag ${CI_REGISTRY_USER}/open5gs:${CI_COMMIT_SHORT_SHA} ${CI_REGISTRY_USER}/open5gs:latest
+      docker push ${CI_REGISTRY_USER}/open5gs:latest
+
