@@ -3,13 +3,13 @@ stages:
   - build
 #  - test
 
-#include:
+# include:
 #  - template: Security/SAST.gitlab-ci.yml
 
-#variables:
+# variables:
 #  SAST_EXCLUDED_ANALYZERS: "spotbugs,gosec"
 
-#default:
+# default:
 #  cache:
 #    key: "build-code-$CI_COMMIT_REF_SLUG"
 #    paths:
@@ -36,7 +36,7 @@ build-code:
 #    paths:
 #      - install/bin/open5gs-*
 
-#build-dockerfile:
+# build-dockerfile:
 #  stage: build
 #  image: docker:24.0.6-dind
 #  services:
