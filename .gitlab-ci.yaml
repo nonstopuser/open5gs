@@ -1,4 +1,4 @@
-#  Pipeline for frontend
+# Pipeline for frontend
 stages:
   - build
 
