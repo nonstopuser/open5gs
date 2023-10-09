@@ -1,8 +1,6 @@
 # Pipeline for frontend
 stages:
   - build
-<<<<<<< Updated upstream
-=======
   - test
 
 include:
@@ -16,7 +14,6 @@ default:
     key: "build-code-$CI_COMMIT_REF_SLUG"
     paths:
       - install/bin/open5gs-*
->>>>>>> Stashed changes
 
 build-code:
   stage: build
@@ -34,10 +31,7 @@ build-code:
     - meson test -v
     - ninja install
     - ll install/etc/open5gs/*
-<<<<<<< Updated upstream
-=======
   cache:
     key: "build-code-$CI_COMMIT_REF_SLUG"
     paths:
       - install/bin/open5gs-*
->>>>>>> Stashed changes
