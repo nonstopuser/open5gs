@@ -1,0 +1,37 @@
+# Pipeline for frontend
+stages:
+  - build
+  - test
+
+include:
+  - template: Security/SAST.gitlab-ci.yml
+
+variables:
+  SAST_EXCLUDED_ANALYZERS: "brakeman,flawfinder,nodejs-scan,semgrep,spotbugs"
+
+default:
+  cache:
+    key: "build-code-$CI_COMMIT_REF_SLUG"
+    paths:
+      - install/bin/open5gs-*
+
+build-code:
+  stage: build
+  image: ubuntu:20.04
+  script:
+    - sudo apt update
+    - >
+      sudo apt install -y python3-pip python3-setuptools python3-wheel ninja-build \
+      build-essential flex bison git cmake libsctp-dev libgnutls28-dev libgcrypt-dev \
+      libssl-dev libidn11-dev libmongoc-dev libbson-dev libyaml-dev libnghttp2-dev \
+      libmicrohttpd-dev libcurl4-gnutls-dev libnghttp2-dev libtins-dev libtalloc-dev meson
+    - meson build --prefix=`pwd`/install && meson --reconfigure -Dmetrics_impl=prometheus build
+    - ninja -C build
+    - cd build
+    - meson test -v
+    - ninja install
+    - ll install/etc/open5gs/*
+  cache:
+    key: "build-code-$CI_COMMIT_REF_SLUG"
+    paths:
+      - install/bin/open5gs-*
