@@ -17,7 +17,7 @@ default:
 
 build-code:
   stage: build
-  image: ubuntu:22.04
+  image: docker pull mongo:jammy
   variables: 
     DEBIAN_FRONTEND: "noninteractive"
   script:
@@ -29,13 +29,6 @@ build-code:
       libmicrohttpd-dev libcurl4-gnutls-dev libnghttp2-dev libtins-dev libtalloc-dev meson \
       gnupg curl
     - |
-      curl -fsSL https://pgp.mongodb.com/server-6.0.asc | gpg -o /usr/share/keyrings/mongodb-server-6.0.gpg --dearmor
-      echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-6.0.gpg] \
-      https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-6.0.list
-      apt-get update
-      apt-get install -y mongodb-org
-      service enable mongod
-      service start mongod
       ./misc/netconf.sh
       meson build --prefix=`pwd`/install && meson --reconfigure -Dmetrics_impl=prometheus build
       ninja -C build
