@@ -34,6 +34,7 @@ build-code:
       https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-6.0.list
       apt-get update
       apt-get install -y mongodb-org
+      service enable mongod
       service start mongod
       ./misc/netconf.sh
       meson build --prefix=`pwd`/install && meson --reconfigure -Dmetrics_impl=prometheus build
