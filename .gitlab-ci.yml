@@ -28,12 +28,11 @@ build-code:
       libssl-dev libidn11-dev libmongoc-dev libbson-dev libyaml-dev libnghttp2-dev \
       libmicrohttpd-dev libcurl4-gnutls-dev libnghttp2-dev libtins-dev libtalloc-dev meson \
       gnupg curl iproute2
-    - uname
+    - ip tuntap add name ogstun mode tun
+    - ip addr add 10.45.0.1/16 dev ogstun
+    - ip addr add 2001:db8:cafe::1/48 dev ogstun
+    - ip link set ogstun up
     - |
-      ip tuntap add name ogstun mode tun
-      ip addr add 10.45.0.1/16 dev ogstun
-      ip addr add 2001:db8:cafe::1/48 dev ogstun
-      ip link set ogstun up
       meson build --prefix=`pwd`/install && meson --reconfigure -Dmetrics_impl=prometheus build
       ninja -C build
       cd build
