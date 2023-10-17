@@ -17,7 +17,7 @@ default:
 
 build-code:
   stage: build
-  image: docker pull mongo:jammy
+  image: mongo:jammy
   variables: 
     DEBIAN_FRONTEND: "noninteractive"
   script:
