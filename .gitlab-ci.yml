@@ -30,7 +30,7 @@ build-code:
       gnupg curl iproute2
     - uname
     - |
-      ./misc/netconf.sh
+      bash -x ./misc/netconf.sh
       meson build --prefix=`pwd`/install && meson --reconfigure -Dmetrics_impl=prometheus build
       ninja -C build
       cd build
