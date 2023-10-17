@@ -27,7 +27,7 @@ build-code:
       build-essential flex bison git cmake libsctp-dev libgnutls28-dev libgcrypt-dev \
       libssl-dev libidn11-dev libmongoc-dev libbson-dev libyaml-dev libnghttp2-dev \
       libmicrohttpd-dev libcurl4-gnutls-dev libnghttp2-dev libtins-dev libtalloc-dev meson \
-      gnupg curl
+      gnupg curl net-tools
     - |
       ./misc/netconf.sh
       meson build --prefix=`pwd`/install && meson --reconfigure -Dmetrics_impl=prometheus build
