@@ -2,9 +2,9 @@ stages:
   - build
   - release
 
-include:
-  - project: 'templates/ci'
-    file: 'DockerInDockerTemplate.yml'
+# include:
+#   - project: 'templates/ci'
+#     file: 'DockerInDockerTemplate.yml'
 
 build-docker-images:
   stage: build
