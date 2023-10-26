@@ -32,8 +32,7 @@ deploy-docker-compose:
     - echo "${SSH_PRIVATE_KEY}" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
-    - echo "ssh-keyscan -t ssh-rsa ${VM_IP_ADDRESS}"
-    - echo "ssh-keyscan -t ssh-rsa ${VM_IP_ADDRESS}" >> ~/.ssh/known_hosts
+    - echo "$(ssh-keyscan -t ssh-rsa ${VM_IP_ADDRESS})" >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
   script:
     - scp openms/docker/docker-compose.yml ${DEV_USER}@${VM_IP_ADDRESS}:/home/${DEV_USER}/docker-compose.yml
