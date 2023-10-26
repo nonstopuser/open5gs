@@ -21,7 +21,7 @@ build-docker-images:
     - >
       docker build
       --file Dockerfile_mongodb
-      --tag open5gs:mongodb-${CI_COMMIT_SHORT_SHA} 
+      --tag ${CI_REGISTRY_USER}/open5gs:mongodb-${CI_COMMIT_SHORT_SHA} 
       .
     - docker push ${CI_REGISTRY_USER}/open5gs:mongodb-${CI_COMMIT_SHORT_SHA}
 
