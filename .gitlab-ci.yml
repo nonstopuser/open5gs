@@ -18,6 +18,7 @@ build-docker-images:
   except:
     changes:
       - openms/**/*
+      - .gitlab-ci.yml
 
 deploy-docker-compose:
   stage: deploy
