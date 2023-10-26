@@ -21,7 +21,7 @@ services:
       - "3000:3000"
     environment:
       - DB_URI=mongodb://mongodb/open5gs
-      - WAIT_HOSTS=mongodb:27017/
+      - WAIT_HOSTS=mongodb:27017
 
   open5gs:
 #    network_mode: "host"
