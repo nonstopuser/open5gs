@@ -12,11 +12,10 @@ build-docker-images:
   services:
     - docker:24.0.6-dind
   variables:
-    DOCKER_OPTS: "--insecure-registry=registry.eliseev.space:5000"
     DOCKER_TLS_CERTDIR: ""
   before_script:
     - until docker info; do sleep 1; done
-    - sudo cat /etc/docker/daemon.json
+    - cat /etc/docker/daemon.json
     - docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
   script:
     - cd openms/docker
@@ -35,7 +34,6 @@ upload-docker-image-latest:
   services:
     - docker:24.0.6-dind
   variables:
-    DOCKER_OPTS: "--insecure-registry=registry.eliseev.space:5000"
     DOCKER_TLS_CERTDIR: ""
   when: on_success
   before_script:
