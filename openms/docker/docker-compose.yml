@@ -15,6 +15,7 @@ services:
     container_name: open5gs-webui
     depends_on:
       - mongodb
+      - open5gs
     ports:
       - "3000:3000"
     environment:
