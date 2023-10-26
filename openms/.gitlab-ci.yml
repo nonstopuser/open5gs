@@ -40,6 +40,6 @@ upload-docker-image-latest:
     - docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD}
   script:
     - docker pull ${CI_REGISTRY_USER}/open5gs:mongodb-${CI_COMMIT_SHORT_SHA}
-    - docker tag open5gs:mongodb-${CI_COMMIT_SHORT_SHA} open5gs:mongodb-latest
+    - docker tag ${CI_REGISTRY_USER}/open5gs:mongodb-${CI_COMMIT_SHORT_SHA} ${CI_REGISTRY_USER}/open5gs:mongodb-latest
     - docker push ${CI_REGISTRY_USER}/open5gs:mongodb-latest
 
