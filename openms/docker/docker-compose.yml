@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  mongodb:
+    image: nonstopuser/open5gs-mongodb
+    container_name: open5gs-mongodb
+    ports:
+      - "27017:27017"
+    restart: unless-stopped
+    volumes:
+      - mongodb:/data/db
+
+  webui:
+    image: nonstopuser/open5gs-webui
+    container_name: open5gs-webui
+    depends_on:
+      - mongodb
+    ports:
+      - "3000:3000"
+    environment:
+      - DB_URI=mongodb://mongodb/open5gs
+      - WAIT_HOSTS=mongodb:27017/
+
+  open5gs:
+#    network_mode: "host"
+    image: nonstopuser/open5gs
+    depends_on:
+      - mongodb
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - "/dev/net/tun:/dev/net/tun"
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=0
+    volumes:
+      - config:/etc/open5gs
+    hostname: open5gs-run
+#    command: /bin/bash -c "/root/setup.sh; /usr/bin/open5gs-pcrfd -D; /usr/bin/open5gs-pgwd -D; /usr/bin/open5gs-sgwd -D; /usr/bin/open5gs-hssd -D; /usr/bin/open5gs-mmed"
+
+volumes:
+  mongodb: {}
+  config: {}

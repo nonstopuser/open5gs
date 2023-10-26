@@ -22,9 +22,19 @@ build-docker-images:
       docker build
       --file docker/webui/Dockerfile
       --tag ${CI_REGISTRY_USER}/open5gs-webui:${CI_COMMIT_SHORT_SHA}
+      .
+    - >
+      docker build
+      --file docker/ubuntu/latest/base/Dockerfile
+      .
+    - >
+      docker build
+      --file docker/build/Dockerfile
+      --tag ${CI_REGISTRY_USER}/open5gs:${CI_COMMIT_SHORT_SHA}
       . 
     - docker push ${CI_REGISTRY_USER}/open5gs-mongodb:${CI_COMMIT_SHORT_SHA}
     - docker push ${CI_REGISTRY_USER}/open5gs-webui:${CI_COMMIT_SHORT_SHA}
+    - docker push ${CI_REGISTRY_USER}/open5gs:${CI_COMMIT_SHORT_SHA}
 
 upload-docker-image-latest:
   stage: release
@@ -48,3 +58,8 @@ upload-docker-image-latest:
       docker pull ${CI_REGISTRY_USER}/open5gs-webui:${CI_COMMIT_SHORT_SHA}
       docker tag ${CI_REGISTRY_USER}/open5gs-webui:${CI_COMMIT_SHORT_SHA} ${CI_REGISTRY_USER}/open5gs-webui:latest
       docker push ${CI_REGISTRY_USER}/open5gs-webui:latest
+    - |
+      docker pull ${CI_REGISTRY_USER}/open5gs:${CI_COMMIT_SHORT_SHA}
+      docker tag ${CI_REGISTRY_USER}/open5gs:${CI_COMMIT_SHORT_SHA} ${CI_REGISTRY_USER}/open5gs:latest
+      docker push ${CI_REGISTRY_USER}/open5gs:latest
+
