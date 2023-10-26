@@ -26,6 +26,7 @@ build-docker-images:
     - >
       docker build
       --file docker/ubuntu/latest/base/Dockerfile
+      --tag ${CI_REGISTRY_USER}/ubuntu-latest-open5gs-base
       .
     - >
       docker build
