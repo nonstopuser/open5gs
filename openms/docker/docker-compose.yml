@@ -9,7 +9,7 @@ services:
     restart: unless-stopped
     volumes:
       - mongodb:/data/db
-      - mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
 
   webui:
     image: nonstopuser/open5gs-webui
