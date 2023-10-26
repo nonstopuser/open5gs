@@ -36,6 +36,7 @@ deploy-docker-compose:
     - chmod 644 ~/.ssh/known_hosts
   script:
     - scp openms/docker/docker-compose.yml ${DEV_USER}@${VM_IP_ADDRESS}:/home/${DEV_USER}/docker-compose.yml
+    - scp docs/assets/webui/mongo-init.js ${DEV_USER}@${VM_IP_ADDRESS}:/home/${DEV_USER}/mongo-init.js
     - > 
       ssh ${DEV_USER}@${VM_IP_ADDRESS}
       "export "DEV_USER=${DEV_USER}";

@@ -2,13 +2,14 @@ version: '3'
 
 services:
   mongodb:
-    image: nonstopuser/open5gs-mongodb
+    image: mongo
     container_name: mongodb
     ports:
       - "27017:27017"
     restart: unless-stopped
     volumes:
       - mongodb:/data/db
+      - mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
 
   webui:
     image: nonstopuser/open5gs-webui

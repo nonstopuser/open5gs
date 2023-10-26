@@ -1,2 +1,2 @@
 FROM mongo:7.0.2-jammy
-VOLUME ../docs/assets/webui/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+COPY ./docs/assets/webui/mongo-init.js /docker-entrypoint-initdb.d/mongo-init.js
