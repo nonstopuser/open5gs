@@ -36,12 +36,6 @@ deploy-docker-compose:
     - chmod 644 ~/.ssh/known_hosts
   script:
     - scp openms/docker/docker-compose.yml ${DEV_USER}@${VM_IP_ADDRESS}:/home/${DEV_USER}/docker-compose.yml
-    - >
-      ssh ${DEV_USER}@${VM_IP_ADDRESS}
-      "export "DEV_USER=${DEV_USER}";
-      export "MINIO_ROOT_USER=$(vault kv get -field=MINIO_ROOT_USER secret/sausage-store)";
-      export "MINIO_ROOT_PASSWORD=$(vault kv get -field=MINIO_ROOT_PASSWORD secret/sausage-store)";
-      /bin/bash -s " < ./backend/deploy_object_storage.sh
     - > 
       ssh ${DEV_USER}@${VM_IP_ADDRESS}
       "export "DEV_USER=${DEV_USER}";
