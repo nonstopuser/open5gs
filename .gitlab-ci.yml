@@ -1,7 +1,7 @@
 stages:
   - module-pipelines
   - test
-  # - deploy
+  - deploy
 
 include:
   - template: Security/SAST.gitlab-ci.yml
@@ -15,7 +15,37 @@ build-docker-images:
     include:
       - "/openms/.gitlab-ci.yml"
     strategy: depend
-  only:
+  except:
     changes:
       - openms/**/*
-      
+
+deploy-docker-compose:
+  stage: deploy
+  image: alpine
+  # variables:
+  #   SPRING_CLOUD_VAULT_ENABLED: "false"
+  when: manual
+  before_script:
+    - apk add openssh-client bash
+    - eval $(ssh-agent -s)
+    - echo "${SSH_PRIVATE_KEY}" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo "ssh-keyscan -t ssh-rsa ${VM_IP_ADDRESS}" >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+  script:
+    - scp openms/docker/docker-compose.yml ${DEV_USER}@${VM_IP_ADDRESS}:/home/${DEV_USER}/docker-compose.yml
+    - >
+      ssh ${DEV_USER}@${VM_IP_ADDRESS}
+      "export "DEV_USER=${DEV_USER}";
+      export "MINIO_ROOT_USER=$(vault kv get -field=MINIO_ROOT_USER secret/sausage-store)";
+      export "MINIO_ROOT_PASSWORD=$(vault kv get -field=MINIO_ROOT_PASSWORD secret/sausage-store)";
+      /bin/bash -s " < ./backend/deploy_object_storage.sh
+    - > 
+      ssh ${DEV_USER}@${VM_IP_ADDRESS}
+      "export "DEV_USER=${DEV_USER}";
+      export "CI_REGISTRY_USER=${CI_REGISTRY_USER}";
+      export "CI_REGISTRY_PASSWORD=${CI_REGISTRY_PASSWORD}";
+      docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD 
+      && docker-compose pull
+      && docker-compose up --detach --force-recreate --remove-orphans open5gs"
