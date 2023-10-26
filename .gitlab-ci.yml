@@ -1,7 +1,7 @@
 stages:
-  - module-pipelines
   - test
   - deploy
+  - module-pipelines
 
 include:
   - template: Security/SAST.gitlab-ci.yml
