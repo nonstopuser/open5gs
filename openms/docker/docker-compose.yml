@@ -37,25 +37,44 @@ services:
     volumes:
       - config:/etc/open5gs
     hostname: open5gs-run
-    command: >
-             /bin/bash -c "/root/setup.sh
-             && sed -ie 's~mongodb://localhost/open5gs~mongodb://mongodb:27017/open5gs~g' /usr/local/etc/open5gs/*.yaml
-             && /usr/local/bin/open5gs-nrfd -D
-             && /usr/local/bin/open5gs-scpd -D
-             && /usr/local/bin/open5gs-amfd -D
-             && /usr/local/bin/open5gs-smfd -D
-             && /usr/local/bin/open5gs-upfd -D
-             && /usr/local/bin/open5gs-ausfd -D
-             && /usr/local/bin/open5gs-udmd -D
-             && /usr/local/bin/open5gs-pcfd -D
-             && /usr/local/bin/open5gs-nssfd -D
-             && /usr/local/bin/open5gs-bsfd -D
-             && /usr/local/bin/open5gs-udrd -D
-             && /usr/local/bin/open5gs-mmed -D
-             && /usr/local/bin/open5gs-sgwcd -D
-             && /usr/local/bin/open5gs-sgwud -D
-             && /usr/local/bin/open5gs-hssd -D
-             && /usr/local/bin/open5gs-pcrfd -D"
+    entrypoint: >
+                /bin/bash -c "/root/setup.sh
+                && sed -ie 's~mongodb://localhost/open5gs~mongodb://mongodb:27017/open5gs~g' /usr/local/etc/open5gs/*.yaml
+                && /usr/local/bin/open5gs-nrfd -D
+                && /usr/local/bin/open5gs-scpd -D
+                && /usr/local/bin/open5gs-amfd -D
+                && /usr/local/bin/open5gs-smfd -D
+                && /usr/local/bin/open5gs-upfd -D
+                && /usr/local/bin/open5gs-ausfd -D
+                && /usr/local/bin/open5gs-udmd -D
+                && /usr/local/bin/open5gs-pcfd -D
+                && /usr/local/bin/open5gs-nssfd -D
+                && /usr/local/bin/open5gs-bsfd -D
+                && /usr/local/bin/open5gs-udrd -D
+                && /usr/local/bin/open5gs-mmed -D
+                && /usr/local/bin/open5gs-sgwcd -D
+                && /usr/local/bin/open5gs-sgwud -D
+                && /usr/local/bin/open5gs-hssd -D
+                && /usr/local/bin/open5gs-pcrfd -D"    
+    # command: >
+    #          /bin/bash -c "/root/setup.sh
+    #          && sed -ie 's~mongodb://localhost/open5gs~mongodb://mongodb:27017/open5gs~g' /usr/local/etc/open5gs/*.yaml
+    #          && /usr/local/bin/open5gs-nrfd -D
+    #          && /usr/local/bin/open5gs-scpd -D
+    #          && /usr/local/bin/open5gs-amfd -D
+    #          && /usr/local/bin/open5gs-smfd -D
+    #          && /usr/local/bin/open5gs-upfd -D
+    #          && /usr/local/bin/open5gs-ausfd -D
+    #          && /usr/local/bin/open5gs-udmd -D
+    #          && /usr/local/bin/open5gs-pcfd -D
+    #          && /usr/local/bin/open5gs-nssfd -D
+    #          && /usr/local/bin/open5gs-bsfd -D
+    #          && /usr/local/bin/open5gs-udrd -D
+    #          && /usr/local/bin/open5gs-mmed -D
+    #          && /usr/local/bin/open5gs-sgwcd -D
+    #          && /usr/local/bin/open5gs-sgwud -D
+    #          && /usr/local/bin/open5gs-hssd -D
+    #          && /usr/local/bin/open5gs-pcrfd -D"
 
 volumes:
   mongodb: {}
