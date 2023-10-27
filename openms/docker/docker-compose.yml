@@ -60,6 +60,10 @@ services:
              && /usr/local/bin/open5gs-sgwud -D
              && /usr/local/bin/open5gs-hssd -D
              && /usr/local/bin/open5gs-pcrfd"
+  
+  ueransim:
+    image: nonstopuser/open5gs-ueransim
+
 
 volumes:
   mongodb: {}
