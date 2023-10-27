@@ -4,19 +4,15 @@ services:
   mongodb:
     image: mongo
     container_name: mongodb
-    expose:
-      - "27017"
+    ports:
+      - "27017:27017"
     restart: unless-stopped
     volumes:
       - mongodb:/data/db
       - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
-    networks:
-      - open5gs
 
   ueransim:
     image: nonstopuser/open5gs-ueransim
-    networks:
-      - open5gs
 
   open5gs:
 #    network_mode: "host"
@@ -33,8 +29,8 @@ services:
     volumes:
       - config:/etc/open5gs
     hostname: open5gs-run
-    expose:
-      - "38412/sctp"    
+    ports:
+      - "38412:38412/sctp"    
     command: >
              /bin/bash -c "/root/setup.sh
              && sed -ie 's~mongodb://localhost/open5gs~mongodb://mongodb:27017/open5gs~g' /usr/local/etc/open5gs/*.yaml
@@ -54,8 +50,6 @@ services:
              && /usr/local/bin/open5gs-sgwud -D
              && /usr/local/bin/open5gs-hssd -D
              && /usr/local/bin/open5gs-pcrfd"
-    networks:
-      - open5gs
 
   webui:
     image: nonstopuser/open5gs-webui
@@ -68,12 +62,7 @@ services:
     environment:
       - DB_URI=mongodb://mongodb/open5gs
       - WAIT_HOSTS=mongodb:27017
-    networks:
-      - open5gs
 
 volumes:
   mongodb: {}
   config: {}
-
-networks:
-  open5gs:
