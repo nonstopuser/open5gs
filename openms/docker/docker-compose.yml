@@ -38,7 +38,7 @@ services:
       - config:/etc/open5gs
     hostname: open5gs-run
     command: >
-             /bin/bash -c "/root/setup.sh;
+             /bin/bash -c "/root/setup.sh
              && /usr/bin/open5gs-nrfd -D
              && /usr/bin/open5gs-scpd -D
              && /usr/bin/open5gs-amfd -D
