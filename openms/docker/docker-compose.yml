@@ -37,7 +37,24 @@ services:
     volumes:
       - config:/etc/open5gs
     hostname: open5gs-run
-#    command: /bin/bash -c "/root/setup.sh; /usr/bin/open5gs-pcrfd -D; /usr/bin/open5gs-pgwd -D; /usr/bin/open5gs-sgwd -D; /usr/bin/open5gs-hssd -D; /usr/bin/open5gs-mmed"
+    command: >
+             /bin/bash -c "/root/setup.sh;
+             && /usr/bin/open5gs-nrfd -D;
+             && /usr/bin/open5gs-scpd -D;
+             && /usr/bin/open5gs-amfd -D;
+             && /usr/bin/open5gs-smfd -D;
+             && /usr/bin/open5gs-upfd -D;
+             && /usr/bin/open5gs-ausfd -D;
+             && /usr/bin/open5gs-udmd -D;
+             && /usr/bin/open5gs-pcfd -D;
+             && /usr/bin/open5gs-nssfd -D;
+             && /usr/bin/open5gs-bsfd -D;
+             && /usr/bin/open5gs-udrd -D;
+             && /usr/bin/open5gs-mmed -D;
+             && /usr/bin/open5gs-sgwcd -D;
+             && /usr/bin/open5gs-sgwud -D;
+             && /usr/bin/open5gs-hssd -D;
+             && /usr/bin/open5gs-pcrfd -D;
 
 volumes:
   mongodb: {}
