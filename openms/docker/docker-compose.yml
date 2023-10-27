@@ -54,7 +54,7 @@ services:
              && /usr/bin/open5gs-sgwcd -D;
              && /usr/bin/open5gs-sgwud -D;
              && /usr/bin/open5gs-hssd -D;
-             && /usr/bin/open5gs-pcrfd -D;"
+             && /usr/bin/open5gs-pcrfd -D"
 
 volumes:
   mongodb: {}
