@@ -37,6 +37,8 @@ services:
     volumes:
       - config:/etc/open5gs
     hostname: open5gs-run
+    ports:
+      - "38412:38412/sctp"
     expose:
       - "38412/sctp"    
     command: >
