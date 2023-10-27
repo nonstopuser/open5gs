@@ -11,23 +11,15 @@ services:
       - mongodb:/data/db
       - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
 
-  webui:
-    image: nonstopuser/open5gs-webui
-    container_name: open5gs-webui
-    depends_on:
-      - mongodb
-      - open5gs
-    ports:
-      - "3000:3000"
-    environment:
-      - DB_URI=mongodb://mongodb/open5gs
-      - WAIT_HOSTS=mongodb:27017
+  ueransim:
+    image: nonstopuser/open5gs-ueransim
 
   open5gs:
 #    network_mode: "host"
     image: nonstopuser/open5gs
     depends_on:
       - mongodb
+      - ueransim
     cap_add:
       - NET_ADMIN
     devices:
@@ -60,10 +52,18 @@ services:
              && /usr/local/bin/open5gs-sgwud -D
              && /usr/local/bin/open5gs-hssd -D
              && /usr/local/bin/open5gs-pcrfd"
-  
-  ueransim:
-    image: nonstopuser/open5gs-ueransim
 
+  webui:
+    image: nonstopuser/open5gs-webui
+    container_name: open5gs-webui
+    depends_on:
+      - mongodb
+      - open5gs
+    ports:
+      - "3000:3000"
+    environment:
+      - DB_URI=mongodb://mongodb/open5gs
+      - WAIT_HOSTS=mongodb:27017
 
 volumes:
   mongodb: {}
