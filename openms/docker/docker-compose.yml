@@ -39,6 +39,7 @@ services:
     hostname: open5gs-run
     command: >
              /bin/bash -c "/root/setup.sh
+             && sed -ie 's~mongodb://localhost/open5gs~mongodb://mongodb:27017/open5gs~g' /usr/local/etc/open5gs/*.yaml
              && /usr/local/bin/open5gs-nrfd -D
              && /usr/local/bin/open5gs-scpd -D
              && /usr/local/bin/open5gs-amfd -D
