@@ -10,9 +10,13 @@ services:
     volumes:
       - mongodb:/data/db
       - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    networks:
+      - open5gs
 
   ueransim:
     image: nonstopuser/open5gs-ueransim
+    networks:
+      - open5gs
 
   open5gs:
 #    network_mode: "host"
@@ -50,6 +54,8 @@ services:
              && /usr/local/bin/open5gs-sgwud -D
              && /usr/local/bin/open5gs-hssd -D
              && /usr/local/bin/open5gs-pcrfd"
+    networks:
+      - open5gs
 
   webui:
     image: nonstopuser/open5gs-webui
@@ -62,7 +68,12 @@ services:
     environment:
       - DB_URI=mongodb://mongodb/open5gs
       - WAIT_HOSTS=mongodb:27017
+    networks:
+      - open5gs
 
 volumes:
   mongodb: {}
   config: {}
+
+networks:
+  open5gs:
