@@ -28,9 +28,7 @@ services:
       - net.ipv6.conf.all.disable_ipv6=0
     volumes:
       - config:/etc/open5gs
-    hostname: open5gs-run
-    ports:
-      - "38412:38412/sctp"    
+    hostname: open5gs-run  
     command: >
              /bin/bash -c "/root/setup.sh
              && sed -ie 's~mongodb://localhost/open5gs~mongodb://mongodb:27017/open5gs~g' /usr/local/etc/open5gs/*.yaml
