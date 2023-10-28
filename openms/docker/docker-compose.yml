@@ -13,7 +13,7 @@ services:
 
   ueransim:
     image: nonstopuser/open5gs-ueransim
-    command: sed 's/ngapIp: 127.0.0.1/ngapIp: 172.20.03/' /UERANSIM/open5gs-gnb.yaml
+    command: sed -i 's/ngapIp: 127.0.0.1/ngapIp: 172.20.03/' /UERANSIM/open5gs-gnb.yaml
 
   open5gs:
 #    network_mode: "host"
