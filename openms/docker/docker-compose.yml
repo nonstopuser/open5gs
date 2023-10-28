@@ -13,6 +13,7 @@ services:
 
   ueransim:
     image: nonstopuser/open5gs-ueransim
+    command: sed 's/ngapIp: 127.0.0.1/ngapIp: 172.20.03/' /UERANSIM/open5gs-gnb.yaml
 
   open5gs:
 #    network_mode: "host"
@@ -32,6 +33,7 @@ services:
     command: >
              /bin/bash -c "/root/setup.sh
              && sed -ie 's~mongodb://localhost/open5gs~mongodb://mongodb:27017/open5gs~g' /usr/local/etc/open5gs/*.yaml
+             && sed -i '/^    ngap/,/    metrics/ s/^      - addr: 127.0.0.5/       - addr: '$(hostname -i)'/' /usr/local/etc/open5gs/amf.yaml
              && /usr/local/bin/open5gs-nrfd -D
              && /usr/local/bin/open5gs-scpd -D
              && /usr/local/bin/open5gs-amfd -D
