@@ -15,7 +15,7 @@ services:
     image: nonstopuser/open5gs-ueransim
     command: >
              /bin/bash -c "sed -i 's/ngapIp: 127.0.0.1/ngapIp: 172.20.03/' /UERANSIM/open5gs-gnb.yaml
-             && tail -f /dev/null
+             && tail -f /dev/null"
 
   open5gs:
 #    network_mode: "host"
