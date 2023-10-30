@@ -29,6 +29,7 @@ services:
       - "/dev/net/tun:/dev/net/tun"
     ports:
       - "38412:38412/sctp"
+    restart: always
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=0
     volumes:
@@ -63,6 +64,7 @@ services:
       - open5gs
     ports:
       - "3000:3000"
+    restart: always
     environment:
       - DB_URI=mongodb://mongodb/open5gs
       - WAIT_HOSTS=mongodb:27017
