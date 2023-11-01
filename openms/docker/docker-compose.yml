@@ -30,7 +30,11 @@ services:
       - "/dev/net/tun:/dev/net/tun"
     ports:
       - "38412:38412/sctp"
-      - "9092:9103-9092:9103"
+      - "9092:9092"
+      - "9094:9094"
+      - "9095:9095"
+      - "9097:9097"
+      - "9103:9103"
     restart: always
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=0
