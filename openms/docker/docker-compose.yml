@@ -30,11 +30,7 @@ services:
       - "/dev/net/tun:/dev/net/tun"
     ports:
       - "38412:38412/sctp"
-      - "127.0.0.1:9092:127.0.0.2:9090"
-      - "127.0.0.1:9094:127.0.0.4:9090"
-      - "127.0.0.1:9095:127.0.0.5:9090"
-      - "127.0.0.1:9097:127.0.0.7:9090"
-      - "127.0.0.1:9103:127.0.0.13:9090"
+      - "9092:9103-9092:9103"
     restart: always
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=0
@@ -42,7 +38,8 @@ services:
       - config:/etc/open5gs
     hostname: open5gs-run  
     command: >
-             /bin/bash -c "/root/setup.sh
+             /bin/bash -c "apt install -y socat
+             && /root/setup.sh
              && sed -ie 's~mongodb://localhost/open5gs~mongodb://mongodb:27017/open5gs~g' /usr/local/etc/open5gs/*.yaml
              && sed -i '/^    ngap/,/    metrics/ s/^      - addr: 127.0.0.5/       - addr: '$(hostname -i)'/' /usr/local/etc/open5gs/amf.yaml
              && /usr/local/bin/open5gs-nrfd -D
@@ -60,7 +57,12 @@ services:
              && /usr/local/bin/open5gs-sgwcd -D
              && /usr/local/bin/open5gs-sgwud -D
              && /usr/local/bin/open5gs-hssd -D
-             && /usr/local/bin/open5gs-pcrfd"
+             && /usr/local/bin/open5gs-pcrfd -D
+             && socat TCP-LISTEN:9092,fork TCP:127.0.0.2:9090 &
+             && socat TCP-LISTEN:9094,fork TCP:127.0.0.4:9090 &
+             && socat TCP-LISTEN:9095,fork TCP:127.0.0.5:9090 &
+             && socat TCP-LISTEN:9097,fork TCP:127.0.0.7:9090 &
+             && socat TCP-LISTEN:9103,fork TCP:127.0.0.13:9090"
 
   webui:
     image: nonstopuser/open5gs-webui
