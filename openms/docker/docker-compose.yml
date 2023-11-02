@@ -30,11 +30,6 @@ services:
       - "/dev/net/tun:/dev/net/tun"
     ports:
       - "38412:38412/sctp"
-      - "9092:9092"
-      - "9094:9094"
-      - "9095:9095"
-      - "9097:9097"
-      - "9103:9103"
     restart: always
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=0
@@ -61,12 +56,7 @@ services:
              && /usr/local/bin/open5gs-sgwcd -D
              && /usr/local/bin/open5gs-sgwud -D
              && /usr/local/bin/open5gs-hssd -D
-             && /usr/local/bin/open5gs-pcrfd -D
-             && socat TCP-LISTEN:9092,fork TCP:127.0.0.2:9090 &
-             && socat TCP-LISTEN:9094,fork TCP:127.0.0.4:9090 &
-             && socat TCP-LISTEN:9095,fork TCP:127.0.0.5:9090 &
-             && socat TCP-LISTEN:9097,fork TCP:127.0.0.7:9090 &
-             && socat TCP-LISTEN:9103,fork TCP:127.0.0.13:9090"
+             && /usr/local/bin/open5gs-pcrfd"
 
   webui:
     image: nonstopuser/open5gs-webui
