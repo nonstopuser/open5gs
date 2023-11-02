@@ -26,6 +26,8 @@ services:
       - ueransim
     cap_add:
       - NET_ADMIN
+    sysctls:
+      net.ipv4.conf.eth0.route_localnet: 1
     devices:
       - "/dev/net/tun:/dev/net/tun"
     ports:
@@ -37,7 +39,8 @@ services:
       - config:/etc/open5gs
     hostname: open5gs-run  
     command: >
-             /bin/bash -c "apt install -y socat
+             /bin/bash -c "apt install -y iptables
+             && /sbin/iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 9092 -j DNAT --to 127.0.0.2:9092
              && /root/setup.sh
              && sed -ie 's~mongodb://localhost/open5gs~mongodb://mongodb:27017/open5gs~g' /usr/local/etc/open5gs/*.yaml
              && sed -i '/^    ngap/,/    metrics/ s/^      - addr: 127.0.0.5/       - addr: '$(hostname -i)'/' /usr/local/etc/open5gs/amf.yaml
