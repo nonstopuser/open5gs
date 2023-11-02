@@ -26,8 +26,6 @@ services:
       - ueransim
     cap_add:
       - NET_ADMIN
-    sysctls:
-      net.ipv4.conf.eth0.route_localnet: 1
     devices:
       - "/dev/net/tun:/dev/net/tun"
     ports:
@@ -35,6 +33,7 @@ services:
     restart: always
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=0
+      - net.ipv4.conf.eth0.route_localnet=1
     volumes:
       - config:/etc/open5gs
     hostname: open5gs-run  
