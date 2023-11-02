@@ -38,8 +38,12 @@ services:
       - config:/etc/open5gs
     hostname: open5gs-run  
     command: >
-             /bin/bash -c "apt install -y iptables
-             && /sbin/iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 9092 -j DNAT --to 127.0.0.2:9092
+             /bin/bash -c "apt install -y iptables net-tools vim tcpdump
+             && /sbin/iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 9092 -j DNAT --to 127.0.0.2:9090
+             && /sbin/iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 9094 -j DNAT --to 127.0.0.4:9090
+             && /sbin/iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 9095 -j DNAT --to 127.0.0.5:9090
+             && /sbin/iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 9097 -j DNAT --to 127.0.0.7:9090
+             && /sbin/iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 9103 -j DNAT --to 127.0.0.13:9090
              && /root/setup.sh
              && sed -ie 's~mongodb://localhost/open5gs~mongodb://mongodb:27017/open5gs~g' /usr/local/etc/open5gs/*.yaml
              && sed -i '/^    ngap/,/    metrics/ s/^      - addr: 127.0.0.5/       - addr: '$(hostname -i)'/' /usr/local/etc/open5gs/amf.yaml
