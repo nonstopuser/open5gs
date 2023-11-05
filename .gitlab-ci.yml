@@ -44,4 +44,4 @@ deploy-docker-compose:
       export "CI_REGISTRY_PASSWORD=${CI_REGISTRY_PASSWORD}";
       docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD 
       && docker compose pull
-      && docker compose up --detach --force-recreate --remove-orphans webui"
+      && docker compose up --detach --force-recreate --remove-orphans webui prometheus"

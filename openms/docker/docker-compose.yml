@@ -15,12 +15,13 @@ services:
     image: nonstopuser/open5gs-ueransim
     restart: unless-stopped
     command: >
-             /bin/bash -c "sed -i 's/ngapIp: 127.0.0.1/ngapIp: 172.20.03/' /UERANSIM/open5gs-gnb.yaml
+             /bin/bash -c "sed -i 's/ngapIp: 127.0.0.1/ngapIp: '$(hostname -i)'/' /UERANSIM/open5gs-gnb.yaml
              && tail -f /dev/null"
 
   open5gs:
 #    network_mode: "host"
     image: nonstopuser/open5gs
+    container_name: open5gs
     depends_on:
       - mongodb
       - ueransim
@@ -77,6 +78,21 @@ services:
       - DB_URI=mongodb://mongodb/open5gs
       - WAIT_HOSTS=mongodb:27017
 
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    restart: unless-stopped
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+
 volumes:
   mongodb: {}
   config: {}
+  prometheus_data: {}
