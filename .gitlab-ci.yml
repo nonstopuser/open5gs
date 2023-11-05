@@ -37,6 +37,7 @@ deploy-docker-compose:
   script:
     - scp openms/docker/docker-compose.yml ${DEV_USER}@${VM_IP_ADDRESS}:/home/${DEV_USER}/docker-compose.yml
     - scp docs/assets/webui/mongo-init.js ${DEV_USER}@${VM_IP_ADDRESS}:/home/${DEV_USER}/mongo-init.js
+    - scp openms/monitoring/prometheus.yml ${DEV_USER}@${VM_IP_ADDRESS}:/home/${DEV_USER}/prometheus.yml
     - > 
       ssh ${DEV_USER}@${VM_IP_ADDRESS}
       "export "DEV_USER=${DEV_USER}";
