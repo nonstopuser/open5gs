@@ -13,6 +13,7 @@ services:
 
   ueransim:
     image: nonstopuser/open5gs-ueransim
+    container_name: ueransim
     restart: unless-stopped
     command: >
              /bin/bash -c "sed -i 's/ngapIp: 127.0.0.1/ngapIp: '$(hostname -i)'/' /UERANSIM/open5gs-gnb.yaml
