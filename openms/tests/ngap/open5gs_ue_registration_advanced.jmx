@@ -1,0 +1,1635 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.1.1 r1855137">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="------------------------------------- ALM variables -----------------------------------------" elementType="Argument">
+            <stringProp name="Argument.name">------------------------------------- ALM variables -----------------------------------------</stringProp>
+            <stringProp name="Argument.value">---------------------------------- ALM user properties -----------------------------</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almServerEnabled" elementType="Argument">
+            <stringProp name="Argument.name">almServerEnabled</stringProp>
+            <stringProp name="Argument.value">${__P(alm_server_enabled,false)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almServerProtocol" elementType="Argument">
+            <stringProp name="Argument.name">almServerProtocol</stringProp>
+            <stringProp name="Argument.value">${__P(alm_server_protocol,HTTPS)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almServerURL" elementType="Argument">
+            <stringProp name="Argument.name">almServerURL</stringProp>
+            <stringProp name="Argument.value">${__P(alm_server_url,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almServerPort" elementType="Argument">
+            <stringProp name="Argument.name">almServerPort</stringProp>
+            <stringProp name="Argument.value">${__P(alm_server_port,80)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almUser" elementType="Argument">
+            <stringProp name="Argument.name">almUser</stringProp>
+            <stringProp name="Argument.value">${__P(alm_user,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almPassword" elementType="Argument">
+            <stringProp name="Argument.name">almPassword</stringProp>
+            <stringProp name="Argument.value">${__P(alm_password,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almBasic" elementType="Argument">
+            <stringProp name="Argument.name">almBasic</stringProp>
+            <stringProp name="Argument.value">${__P(alm_basic_auth,false)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almDomain" elementType="Argument">
+            <stringProp name="Argument.name">almDomain</stringProp>
+            <stringProp name="Argument.value">${__P(alm_session_domain,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almProject" elementType="Argument">
+            <stringProp name="Argument.name">almProject</stringProp>
+            <stringProp name="Argument.value">${__P(alm_session_project,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almFolderTestRoot" elementType="Argument">
+            <stringProp name="Argument.name">almFolderTestRoot</stringProp>
+            <stringProp name="Argument.value">${__P(alm_folder_test_root,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almFolderTestPlan" elementType="Argument">
+            <stringProp name="Argument.name">almFolderTestPlan</stringProp>
+            <stringProp name="Argument.value">${__P(alm_folder_test_plan,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almFolderTestCampaign" elementType="Argument">
+            <stringProp name="Argument.name">almFolderTestCampaign</stringProp>
+            <stringProp name="Argument.value">${__P(alm_folder_test_campaign,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almTrustStore" elementType="Argument">
+            <stringProp name="Argument.name">almTrustStore</stringProp>
+            <stringProp name="Argument.value">${__P(javax.net.ssl.trustStore,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almTrustPassword" elementType="Argument">
+            <stringProp name="Argument.name">almTrustPassword</stringProp>
+            <stringProp name="Argument.value">${__P(javax.net.ssl.trustStorePassword,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almThreads" elementType="Argument">
+            <stringProp name="Argument.name">almThreads</stringProp>
+            <stringProp name="Argument.value">${__P(alm_proxy_threads,1)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almExtraTag" elementType="Argument">
+            <stringProp name="Argument.name">almExtraTag</stringProp>
+            <stringProp name="Argument.value">${__P(alm_extra_tag,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almTestArea" elementType="Argument">
+            <stringProp name="Argument.name">almTestArea</stringProp>
+            <stringProp name="Argument.value">${__P(alm_test_area,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almKeyStore" elementType="Argument">
+            <stringProp name="Argument.name">almKeyStore</stringProp>
+            <stringProp name="Argument.value">${__P(javax.net.ssl.keyStore,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almKeyPassword" elementType="Argument">
+            <stringProp name="Argument.name">almKeyPassword</stringProp>
+            <stringProp name="Argument.value">${__P(javax.net.ssl.keyStorePassword,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almHttpProxyHost" elementType="Argument">
+            <stringProp name="Argument.name">almHttpProxyHost</stringProp>
+            <stringProp name="Argument.value">${__P(http.proxyHost, )}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almHttpProxyPort" elementType="Argument">
+            <stringProp name="Argument.name">almHttpProxyPort</stringProp>
+            <stringProp name="Argument.value">${__P(http.proxyPort, 0)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almHttpsProxyHost" elementType="Argument">
+            <stringProp name="Argument.name">almHttpsProxyHost</stringProp>
+            <stringProp name="Argument.value">${__P(https.proxyHost, )}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almHttpsProxyPort" elementType="Argument">
+            <stringProp name="Argument.name">almHttpsProxyPort</stringProp>
+            <stringProp name="Argument.value">${__P(https.proxyPort, 0)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="------------------------------------- Test variables -----------------------------------------" elementType="Argument">
+            <stringProp name="Argument.name">------------------------------------- Test variables -----------------------------------------</stringProp>
+            <stringProp name="Argument.value">---------------------------------- Test user properties -----------------------------</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="---------------------------------- ALM variables -----------------------------------------" elementType="Argument">
+            <stringProp name="Argument.name">---------------------------------- ALM variables -----------------------------------------</stringProp>
+            <stringProp name="Argument.value">---------------------------------- ALM user properties -----------------------------</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almServerEnabled" elementType="Argument">
+            <stringProp name="Argument.name">almServerEnabled</stringProp>
+            <stringProp name="Argument.value">${__P(alm_server_enabled,false)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almServerProtocol" elementType="Argument">
+            <stringProp name="Argument.name">almServerProtocol</stringProp>
+            <stringProp name="Argument.value">${__P(alm_server_protocol,HTTPS)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almServerURL" elementType="Argument">
+            <stringProp name="Argument.name">almServerURL</stringProp>
+            <stringProp name="Argument.value">${__P(alm_server_url,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almServerPort" elementType="Argument">
+            <stringProp name="Argument.name">almServerPort</stringProp>
+            <stringProp name="Argument.value">${__P(alm_server_port,80)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almUser" elementType="Argument">
+            <stringProp name="Argument.name">almUser</stringProp>
+            <stringProp name="Argument.value">${__P(alm_user,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almPassword" elementType="Argument">
+            <stringProp name="Argument.name">almPassword</stringProp>
+            <stringProp name="Argument.value">${__P(alm_password,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almBasic" elementType="Argument">
+            <stringProp name="Argument.name">almBasic</stringProp>
+            <stringProp name="Argument.value">${__P(alm_basic_auth,false)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almDomain" elementType="Argument">
+            <stringProp name="Argument.name">almDomain</stringProp>
+            <stringProp name="Argument.value">${__P(alm_session_domain,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almProject" elementType="Argument">
+            <stringProp name="Argument.name">almProject</stringProp>
+            <stringProp name="Argument.value">${__P(alm_session_project,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almFolderTestRoot" elementType="Argument">
+            <stringProp name="Argument.name">almFolderTestRoot</stringProp>
+            <stringProp name="Argument.value">${__P(alm_folder_test_root,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almFolderTestPlan" elementType="Argument">
+            <stringProp name="Argument.name">almFolderTestPlan</stringProp>
+            <stringProp name="Argument.value">${__P(alm_folder_test_plan,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almFolderTestCampaign" elementType="Argument">
+            <stringProp name="Argument.name">almFolderTestCampaign</stringProp>
+            <stringProp name="Argument.value">${__P(alm_folder_test_campaign,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almTrustStore" elementType="Argument">
+            <stringProp name="Argument.name">almTrustStore</stringProp>
+            <stringProp name="Argument.value">${__P(javax.net.ssl.trustStore,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almTrustPassword" elementType="Argument">
+            <stringProp name="Argument.name">almTrustPassword</stringProp>
+            <stringProp name="Argument.value">${__P(javax.net.ssl.trustStorePassword,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almThreads" elementType="Argument">
+            <stringProp name="Argument.name">almThreads</stringProp>
+            <stringProp name="Argument.value">${__P(alm_proxy_threads,1)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almTestArea" elementType="Argument">
+            <stringProp name="Argument.name">almTestArea</stringProp>
+            <stringProp name="Argument.value">${__P(alm_test_area,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almKeyStore" elementType="Argument">
+            <stringProp name="Argument.name">almKeyStore</stringProp>
+            <stringProp name="Argument.value">${__P(javax.net.ssl.keyStore,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almKeyPassword" elementType="Argument">
+            <stringProp name="Argument.name">almKeyPassword</stringProp>
+            <stringProp name="Argument.value">${__P(javax.net.ssl.keyStorePassword,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almHttpProxyHost" elementType="Argument">
+            <stringProp name="Argument.name">almHttpProxyHost</stringProp>
+            <stringProp name="Argument.value">${__P(http.proxyHost, )}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almHttpProxyPort" elementType="Argument">
+            <stringProp name="Argument.name">almHttpProxyPort</stringProp>
+            <stringProp name="Argument.value">${__P(http.proxyPort, 0)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almHttpsProxyHost" elementType="Argument">
+            <stringProp name="Argument.name">almHttpsProxyHost</stringProp>
+            <stringProp name="Argument.value">${__P(https.proxyHost, )}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almHttpsProxyPort" elementType="Argument">
+            <stringProp name="Argument.name">almHttpsProxyPort</stringProp>
+            <stringProp name="Argument.value">${__P(https.proxyPort, 0)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="testboo" elementType="Argument">
+            <stringProp name="Argument.name">testboo</stringProp>
+            <stringProp name="Argument.value">ENC(oIn8bytsEMHb5qZXcb3o5A==)</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="almExtraTag" elementType="Argument">
+            <stringProp name="Argument.name">almExtraTag</stringProp>
+            <stringProp name="Argument.value">${__P(alm_extra_tag,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="------------------------------------- Test variables -----------------------------------------" elementType="Argument">
+            <stringProp name="Argument.name">------------------------------------- Test variables -----------------------------------------</stringProp>
+            <stringProp name="Argument.value">---------------------------------- Test user properties -----------------------------</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="server_1_ip" elementType="Argument">
+            <stringProp name="Argument.name">server_1_ip</stringProp>
+            <stringProp name="Argument.value">127.0.0.1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="server_1_port" elementType="Argument">
+            <stringProp name="Argument.name">server_1_port</stringProp>
+            <stringProp name="Argument.value">8083</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="rest_service_1" elementType="Argument">
+            <stringProp name="Argument.name">rest_service_1</stringProp>
+            <stringProp name="Argument.value">/RestService1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="rest_service_2" elementType="Argument">
+            <stringProp name="Argument.name">rest_service_2</stringProp>
+            <stringProp name="Argument.value">/RestService2</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="rest_service_3" elementType="Argument">
+            <stringProp name="Argument.name">rest_service_3</stringProp>
+            <stringProp name="Argument.value">/RestService3</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="soap_service_1" elementType="Argument">
+            <stringProp name="Argument.name">soap_service_1</stringProp>
+            <stringProp name="Argument.value">/SoapService1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="soap_service_2" elementType="Argument">
+            <stringProp name="Argument.name">soap_service_2</stringProp>
+            <stringProp name="Argument.value">/SoapService2</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="soap_service_3" elementType="Argument">
+            <stringProp name="Argument.name">soap_service_3</stringProp>
+            <stringProp name="Argument.value">/SoapService3</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="rest_service_1_parameters_1" elementType="Argument">
+            <stringProp name="Argument.name">rest_service_1_parameters_1</stringProp>
+            <stringProp name="Argument.value">/RestService1Parameters1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="rest_service_1_parameters_2" elementType="Argument">
+            <stringProp name="Argument.name">rest_service_1_parameters_2</stringProp>
+            <stringProp name="Argument.value">/RestService1Parameters2</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="rest_service_1_parameters_3" elementType="Argument">
+            <stringProp name="Argument.name">rest_service_1_parameters_3</stringProp>
+            <stringProp name="Argument.value">/RestService1Parameters3</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="rest_service_2_parameters_1" elementType="Argument">
+            <stringProp name="Argument.name">rest_service_2_parameters_1</stringProp>
+            <stringProp name="Argument.value">/RestService2Parameters1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="rest_service_2_parameters_2" elementType="Argument">
+            <stringProp name="Argument.name">rest_service_2_parameters_2</stringProp>
+            <stringProp name="Argument.value">/RestService2Parameters2</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="rest_service_2_parameters_3" elementType="Argument">
+            <stringProp name="Argument.name">rest_service_2_parameters_3</stringProp>
+            <stringProp name="Argument.value">/RestService2Parameters3</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="rest_service_3_parameters_1" elementType="Argument">
+            <stringProp name="Argument.name">rest_service_3_parameters_1</stringProp>
+            <stringProp name="Argument.value">/RestService3Parameters1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="rest_service_3_parameters_2" elementType="Argument">
+            <stringProp name="Argument.name">rest_service_3_parameters_2</stringProp>
+            <stringProp name="Argument.value">/RestService3Parameters2</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="rest_service_3_parameters_3" elementType="Argument">
+            <stringProp name="Argument.name">rest_service_3_parameters_3</stringProp>
+            <stringProp name="Argument.value">/RestService3Parameters3</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="soap_service_1_parameters_1" elementType="Argument">
+            <stringProp name="Argument.name">soap_service_1_parameters_1</stringProp>
+            <stringProp name="Argument.value">/SoapService1Parameters1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="soap_service_1_parameters_2" elementType="Argument">
+            <stringProp name="Argument.name">soap_service_1_parameters_2</stringProp>
+            <stringProp name="Argument.value">/SoapService1Parameters2</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="soap_service_1_parameters_3" elementType="Argument">
+            <stringProp name="Argument.name">soap_service_1_parameters_3</stringProp>
+            <stringProp name="Argument.value">/SoapService1Parameters3</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="soap_service_2_parameters_1" elementType="Argument">
+            <stringProp name="Argument.name">soap_service_2_parameters_1</stringProp>
+            <stringProp name="Argument.value">/SoapService2Parameters1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="soap_service_2_parameters_2" elementType="Argument">
+            <stringProp name="Argument.name">soap_service_2_parameters_2</stringProp>
+            <stringProp name="Argument.value">/SoapService2Parameters2</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="soap_service_2_parameters_3" elementType="Argument">
+            <stringProp name="Argument.name">soap_service_2_parameters_3</stringProp>
+            <stringProp name="Argument.value">/SoapService2Parameters3</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="soap_service_3_parameters_1" elementType="Argument">
+            <stringProp name="Argument.name">soap_service_3_parameters_1</stringProp>
+            <stringProp name="Argument.value">/SoapService3Parameters1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="soap_service_3_parameters_2" elementType="Argument">
+            <stringProp name="Argument.name">soap_service_3_parameters_2</stringProp>
+            <stringProp name="Argument.value">/SoapService3Parameters2</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="soap_service_3_parameters_3" elementType="Argument">
+            <stringProp name="Argument.name">soap_service_3_parameters_3</stringProp>
+            <stringProp name="Argument.value">/SoapService3Parameters3</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="rest_service_4" elementType="Argument">
+            <stringProp name="Argument.name">rest_service_4</stringProp>
+            <stringProp name="Argument.value">/RestService4</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="rest_service_4_parameters_1" elementType="Argument">
+            <stringProp name="Argument.name">rest_service_4_parameters_1</stringProp>
+            <stringProp name="Argument.value">/RestService4Parameters1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="header.name" elementType="Argument">
+            <stringProp name="Argument.name">header.name</stringProp>
+            <stringProp name="Argument.value">myHeader</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="header.value" elementType="Argument">
+            <stringProp name="Argument.name">header.value</stringProp>
+            <stringProp name="Argument.value">value_header</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="param_1" elementType="Argument">
+            <stringProp name="Argument.name">param_1</stringProp>
+            <stringProp name="Argument.value">param_1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <org.apache.jmeter.protocol.sctp.config.SCTPConfigElement guiclass="TestBeanGUI" testclass="org.apache.jmeter.protocol.sctp.config.SCTPConfigElement" testname="UE_Node1" enabled="true">
+        <stringProp name="associatedMaxRetrans"></stringProp>
+        <stringProp name="checksumType"></stringProp>
+        <stringProp name="connectionTimeout">5000</stringProp>
+        <stringProp name="endPoint">ue</stringProp>
+        <stringProp name="endPointIp">localhost</stringProp>
+        <stringProp name="endPointPort">5436</stringProp>
+        <stringProp name="hbInterval"></stringProp>
+        <stringProp name="hbMaxBrust"></stringProp>
+        <stringProp name="maxNumberOfInboundStream"></stringProp>
+        <stringProp name="numberOfOutboundStream"></stringProp>
+        <stringProp name="pathMaxRetrans"></stringProp>
+        <stringProp name="remotePort">38412</stringProp>
+        <stringProp name="remotePrimaryIpaddress">amf_ip</stringProp>
+        <stringProp name="remoteSecondaryIpaddress"></stringProp>
+        <stringProp name="rtoAlpha"></stringProp>
+        <stringProp name="rtoBeta"></stringProp>
+        <stringProp name="rtoInitial"></stringProp>
+        <stringProp name="rtoMax"></stringProp>
+        <stringProp name="rtoMin"></stringProp>
+        <stringProp name="secondaryIp"></stringProp>
+        <stringProp name="simulatedEndpoint">NO</stringProp>
+        <stringProp name="validCookieLife"></stringProp>
+        <stringProp name="primaryIp">ue_ip</stringProp>
+        <stringProp name="port">5333</stringProp>
+      </org.apache.jmeter.protocol.sctp.config.SCTPConfigElement>
+      <hashTree/>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>true</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>true</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+        <boolProp name="ResultCollector.success_only_logging">true</boolProp>
+      </ResultCollector>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="NR-gNB send NGSetupRequest" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler guiclass="org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSamplerMainGUI" testclass="org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler" testname="NGSetupRequest" enabled="true">
+          <stringProp name="EndpointName">ue</stringProp>
+          <stringProp name="PayloadState">Completed</stringProp>
+          <stringProp name="protocol.direction">Send</stringProp>
+          <stringProp name="protocol.application.name">&lt;NGAP-PDU&gt;
+   &lt;initiatingMessage&gt;
+      &lt;procedureCode&gt;21&lt;/procedureCode&gt;
+      &lt;criticality&gt;reject&lt;/criticality&gt;
+      &lt;value&gt;
+         &lt;NGSetupRequest&gt;
+            &lt;protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;27&lt;/id&gt;
+                  &lt;criticality&gt;reject&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;GlobalRANNodeID&gt;
+                        &lt;globalGNB-ID&gt;
+                           &lt;pLMNIdentity&gt;99f907&lt;/pLMNIdentity&gt;
+                           &lt;gNB-ID&gt;
+                              &lt;gNB-ID&gt;00000001&lt;/gNB-ID&gt;
+                           &lt;/gNB-ID&gt;
+                        &lt;/globalGNB-ID&gt;
+                     &lt;/GlobalRANNodeID&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;82&lt;/id&gt;
+                  &lt;criticality&gt;ignore&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;RANNodeName&gt;1.gnb.spirent.com&lt;/RANNodeName&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;102&lt;/id&gt;
+                  &lt;criticality&gt;reject&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;SupportedTAList&gt;
+                        &lt;SupportedTAList&gt;
+                           &lt;tAC&gt;000001&lt;/tAC&gt;
+                           &lt;broadcastPLMNList&gt;
+                              &lt;broadcastPLMNList&gt;
+                                 &lt;pLMNIdentity&gt;99f907&lt;/pLMNIdentity&gt;
+                                 &lt;tAISliceSupportList&gt;
+                                    &lt;tAISliceSupportList&gt;
+                                       &lt;s-NSSAI&gt;
+                                          &lt;sST&gt;01&lt;/sST&gt;
+                                       &lt;/s-NSSAI&gt;
+                                    &lt;/tAISliceSupportList&gt;
+                                 &lt;/tAISliceSupportList&gt;
+                              &lt;/broadcastPLMNList&gt;
+                           &lt;/broadcastPLMNList&gt;
+                        &lt;/SupportedTAList&gt;
+                     &lt;/SupportedTAList&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;21&lt;/id&gt;
+                  &lt;criticality&gt;ignore&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;PagingDRX&gt;v32&lt;/PagingDRX&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+            &lt;/protocolIEs&gt;
+         &lt;/NGSetupRequest&gt;
+      &lt;/value&gt;
+   &lt;/initiatingMessage&gt;
+&lt;/NGAP-PDU&gt;
+</stringProp>
+          <stringProp name="NGAP.action">EDIT</stringProp>
+          <stringProp name="all.node.ids">NGAP-PDU;initiatingMessage;procedureCode;criticality;value;NGSetupRequest;protocolIEs;protocolIEs;id;criticality;value;GlobalRANNodeID;globalGNB-ID;pLMNIdentity;gNB-ID;gNB-ID;protocolIEs;id;criticality;value;RANNodeName;protocolIEs;id;criticality;value;SupportedTAList;SupportedTAList;tAC;broadcastPLMNList;broadcastPLMNList;pLMNIdentity;tAISliceSupportList;tAISliceSupportList;s-NSSAI;sST;protocolIEs;id;criticality;value;PagingDRX</stringProp>
+          <intProp name="all.node.ids.count">40</intProp>
+          <stringProp name="node.NGAP-PDU">NGAP-PDU</stringProp>
+          <stringProp name="node.NGAP-PDU.parent"></stringProp>
+          <stringProp name="node.NGAP-PDU.value"></stringProp>
+          <stringProp name="node.initiatingMessage">initiatingMessage</stringProp>
+          <stringProp name="node.initiatingMessage.parent">NGAP-PDU</stringProp>
+          <stringProp name="node.initiatingMessage.value"></stringProp>
+          <stringProp name="node.procedureCode">procedureCode</stringProp>
+          <stringProp name="node.procedureCode.parent">initiatingMessage</stringProp>
+          <stringProp name="node.procedureCode.value"></stringProp>
+          <stringProp name="node.criticality">criticality</stringProp>
+          <stringProp name="node.criticality.parent">protocolIEs</stringProp>
+          <stringProp name="node.criticality.value"></stringProp>
+          <stringProp name="node.value">value</stringProp>
+          <stringProp name="node.value.parent">protocolIEs</stringProp>
+          <stringProp name="node.value.value"></stringProp>
+          <stringProp name="node.NGSetupRequest">NGSetupRequest</stringProp>
+          <stringProp name="node.NGSetupRequest.parent">value</stringProp>
+          <stringProp name="node.NGSetupRequest.value"></stringProp>
+          <stringProp name="node.protocolIEs">protocolIEs</stringProp>
+          <stringProp name="node.protocolIEs.parent">protocolIEs</stringProp>
+          <stringProp name="node.protocolIEs.value"></stringProp>
+          <stringProp name="node.id">id</stringProp>
+          <stringProp name="node.id.parent">protocolIEs</stringProp>
+          <stringProp name="node.id.value"></stringProp>
+          <stringProp name="node.GlobalRANNodeID">GlobalRANNodeID</stringProp>
+          <stringProp name="node.GlobalRANNodeID.parent">value</stringProp>
+          <stringProp name="node.GlobalRANNodeID.value"></stringProp>
+          <stringProp name="node.globalGNB-ID">globalGNB-ID</stringProp>
+          <stringProp name="node.globalGNB-ID.parent">GlobalRANNodeID</stringProp>
+          <stringProp name="node.globalGNB-ID.value"></stringProp>
+          <stringProp name="node.pLMNIdentity">pLMNIdentity</stringProp>
+          <stringProp name="node.pLMNIdentity.parent">broadcastPLMNList</stringProp>
+          <stringProp name="node.pLMNIdentity.value"></stringProp>
+          <stringProp name="node.gNB-ID">gNB-ID</stringProp>
+          <stringProp name="node.gNB-ID.parent">gNB-ID</stringProp>
+          <stringProp name="node.gNB-ID.value"></stringProp>
+          <stringProp name="node.RANNodeName">RANNodeName</stringProp>
+          <stringProp name="node.RANNodeName.parent">value</stringProp>
+          <stringProp name="node.RANNodeName.value"></stringProp>
+          <stringProp name="node.SupportedTAList">SupportedTAList</stringProp>
+          <stringProp name="node.SupportedTAList.parent">SupportedTAList</stringProp>
+          <stringProp name="node.SupportedTAList.value"></stringProp>
+          <stringProp name="node.tAC">tAC</stringProp>
+          <stringProp name="node.tAC.parent">SupportedTAList</stringProp>
+          <stringProp name="node.tAC.value"></stringProp>
+          <stringProp name="node.broadcastPLMNList">broadcastPLMNList</stringProp>
+          <stringProp name="node.broadcastPLMNList.parent">broadcastPLMNList</stringProp>
+          <stringProp name="node.broadcastPLMNList.value"></stringProp>
+          <stringProp name="node.tAISliceSupportList">tAISliceSupportList</stringProp>
+          <stringProp name="node.tAISliceSupportList.parent">tAISliceSupportList</stringProp>
+          <stringProp name="node.tAISliceSupportList.value"></stringProp>
+          <stringProp name="node.s-NSSAI">s-NSSAI</stringProp>
+          <stringProp name="node.s-NSSAI.parent">tAISliceSupportList</stringProp>
+          <stringProp name="node.s-NSSAI.value"></stringProp>
+          <stringProp name="node.sST">sST</stringProp>
+          <stringProp name="node.sST.parent">s-NSSAI</stringProp>
+          <stringProp name="node.sST.value"></stringProp>
+          <stringProp name="node.PagingDRX">PagingDRX</stringProp>
+          <stringProp name="node.PagingDRX.parent">value</stringProp>
+          <stringProp name="node.PagingDRX.value"></stringProp>
+        </org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler>
+        <hashTree/>
+        <org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler guiclass="org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSamplerMainGUI" testclass="org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler" testname="NGSetupResponse" enabled="true">
+          <stringProp name="EndpointName">amf</stringProp>
+          <stringProp name="PayloadState">Completed</stringProp>
+          <stringProp name="protocol.direction">Send</stringProp>
+          <stringProp name="protocol.application.name">&lt;NGAP-PDU&gt;
+   &lt;successfulOutcome&gt;
+      &lt;procedureCode&gt;21&lt;/procedureCode&gt;
+      &lt;criticality&gt;reject&lt;/criticality&gt;
+      &lt;value&gt;
+         &lt;NGSetupResponse&gt;
+            &lt;protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;1&lt;/id&gt;
+                  &lt;criticality&gt;reject&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;AMFName&gt;amf1&lt;/AMFName&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;96&lt;/id&gt;
+                  &lt;criticality&gt;reject&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;ServedGUAMIList&gt;
+                        &lt;ServedGUAMIList&gt;
+                           &lt;gUAMI&gt;
+                              &lt;pLMNIdentity&gt;54F050&lt;/pLMNIdentity&gt;
+                              &lt;aMFRegionID&gt;00000001&lt;/aMFRegionID&gt;
+                              &lt;aMFSetID&gt;0000000001&lt;/aMFSetID&gt;
+                              &lt;aMFPointer&gt;110010&lt;/aMFPointer&gt;
+                           &lt;/gUAMI&gt;
+                        &lt;/ServedGUAMIList&gt;
+                     &lt;/ServedGUAMIList&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;86&lt;/id&gt;
+                  &lt;criticality&gt;ignore&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;RelativeAMFCapacity&gt;0&lt;/RelativeAMFCapacity&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;80&lt;/id&gt;
+                  &lt;criticality&gt;reject&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;PLMNSupportList&gt;
+                        &lt;PLMNSupportList&gt;
+                           &lt;pLMNIdentity&gt;54F050&lt;/pLMNIdentity&gt;
+                           &lt;sliceSupportList&gt;
+                              &lt;sliceSupportList&gt;
+                                 &lt;s-NSSAI&gt;
+                                    &lt;sST&gt;01&lt;/sST&gt;
+                                    &lt;sD&gt;AB2112&lt;/sD&gt;
+                                 &lt;/s-NSSAI&gt;
+                              &lt;/sliceSupportList&gt;
+                              &lt;sliceSupportList&gt;
+                                 &lt;s-NSSAI&gt;
+                                    &lt;sST&gt;02&lt;/sST&gt;
+                                    &lt;sD&gt;AB2112&lt;/sD&gt;
+                                 &lt;/s-NSSAI&gt;
+                              &lt;/sliceSupportList&gt;
+                              &lt;sliceSupportList&gt;
+                                 &lt;s-NSSAI&gt;
+                                    &lt;sST&gt;03&lt;/sST&gt;
+                                    &lt;sD&gt;AB2112&lt;/sD&gt;
+                                 &lt;/s-NSSAI&gt;
+                              &lt;/sliceSupportList&gt;
+                           &lt;/sliceSupportList&gt;
+                        &lt;/PLMNSupportList&gt;
+                     &lt;/PLMNSupportList&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+            &lt;/protocolIEs&gt;
+         &lt;/NGSetupResponse&gt;
+      &lt;/value&gt;
+   &lt;/successfulOutcome&gt;
+&lt;/NGAP-PDU&gt;
+</stringProp>
+          <stringProp name="NGAP.action"></stringProp>
+          <stringProp name="all.node.ids">NGAP-PDU;successfulOutcome;procedureCode;criticality;value;NGSetupResponse;protocolIEs;protocolIEs;id;criticality;value;AMFName;protocolIEs;id;criticality;value;ServedGUAMIList;ServedGUAMIList;gUAMI;pLMNIdentity;aMFRegionID;aMFSetID;aMFPointer;protocolIEs;id;criticality;value;RelativeAMFCapacity;protocolIEs;id;criticality;value;PLMNSupportList;PLMNSupportList;pLMNIdentity;sliceSupportList;sliceSupportList;s-NSSAI;sST;sD;sliceSupportList;s-NSSAI;sST;sD;sliceSupportList;s-NSSAI;sST;sD</stringProp>
+          <intProp name="all.node.ids.count">48</intProp>
+          <stringProp name="node.NGAP-PDU">NGAP-PDU</stringProp>
+          <stringProp name="node.NGAP-PDU.parent"></stringProp>
+          <stringProp name="node.NGAP-PDU.value"></stringProp>
+          <stringProp name="node.successfulOutcome">successfulOutcome</stringProp>
+          <stringProp name="node.successfulOutcome.parent">NGAP-PDU</stringProp>
+          <stringProp name="node.successfulOutcome.value"></stringProp>
+          <stringProp name="node.procedureCode">procedureCode</stringProp>
+          <stringProp name="node.procedureCode.parent">successfulOutcome</stringProp>
+          <stringProp name="node.procedureCode.value"></stringProp>
+          <stringProp name="node.criticality">criticality</stringProp>
+          <stringProp name="node.criticality.parent">protocolIEs</stringProp>
+          <stringProp name="node.criticality.value"></stringProp>
+          <stringProp name="node.value">value</stringProp>
+          <stringProp name="node.value.parent">protocolIEs</stringProp>
+          <stringProp name="node.value.value"></stringProp>
+          <stringProp name="node.NGSetupResponse">NGSetupResponse</stringProp>
+          <stringProp name="node.NGSetupResponse.parent">value</stringProp>
+          <stringProp name="node.NGSetupResponse.value"></stringProp>
+          <stringProp name="node.protocolIEs">protocolIEs</stringProp>
+          <stringProp name="node.protocolIEs.parent">protocolIEs</stringProp>
+          <stringProp name="node.protocolIEs.value"></stringProp>
+          <stringProp name="node.id">id</stringProp>
+          <stringProp name="node.id.parent">protocolIEs</stringProp>
+          <stringProp name="node.id.value"></stringProp>
+          <stringProp name="node.AMFName">AMFName</stringProp>
+          <stringProp name="node.AMFName.parent">value</stringProp>
+          <stringProp name="node.AMFName.value"></stringProp>
+          <stringProp name="node.ServedGUAMIList">ServedGUAMIList</stringProp>
+          <stringProp name="node.ServedGUAMIList.parent">ServedGUAMIList</stringProp>
+          <stringProp name="node.ServedGUAMIList.value"></stringProp>
+          <stringProp name="node.gUAMI">gUAMI</stringProp>
+          <stringProp name="node.gUAMI.parent">ServedGUAMIList</stringProp>
+          <stringProp name="node.gUAMI.value"></stringProp>
+          <stringProp name="node.pLMNIdentity">pLMNIdentity</stringProp>
+          <stringProp name="node.pLMNIdentity.parent">PLMNSupportList</stringProp>
+          <stringProp name="node.pLMNIdentity.value"></stringProp>
+          <stringProp name="node.aMFRegionID">aMFRegionID</stringProp>
+          <stringProp name="node.aMFRegionID.parent">gUAMI</stringProp>
+          <stringProp name="node.aMFRegionID.value"></stringProp>
+          <stringProp name="node.aMFSetID">aMFSetID</stringProp>
+          <stringProp name="node.aMFSetID.parent">gUAMI</stringProp>
+          <stringProp name="node.aMFSetID.value"></stringProp>
+          <stringProp name="node.aMFPointer">aMFPointer</stringProp>
+          <stringProp name="node.aMFPointer.parent">gUAMI</stringProp>
+          <stringProp name="node.aMFPointer.value"></stringProp>
+          <stringProp name="node.RelativeAMFCapacity">RelativeAMFCapacity</stringProp>
+          <stringProp name="node.RelativeAMFCapacity.parent">value</stringProp>
+          <stringProp name="node.RelativeAMFCapacity.value"></stringProp>
+          <stringProp name="node.PLMNSupportList">PLMNSupportList</stringProp>
+          <stringProp name="node.PLMNSupportList.parent">PLMNSupportList</stringProp>
+          <stringProp name="node.PLMNSupportList.value"></stringProp>
+          <stringProp name="node.sliceSupportList">sliceSupportList</stringProp>
+          <stringProp name="node.sliceSupportList.parent">sliceSupportList</stringProp>
+          <stringProp name="node.sliceSupportList.value"></stringProp>
+          <stringProp name="node.s-NSSAI">s-NSSAI</stringProp>
+          <stringProp name="node.s-NSSAI.parent">sliceSupportList</stringProp>
+          <stringProp name="node.s-NSSAI.value"></stringProp>
+          <stringProp name="node.sST">sST</stringProp>
+          <stringProp name="node.sST.parent">s-NSSAI</stringProp>
+          <stringProp name="node.sST.value"></stringProp>
+          <stringProp name="node.sD">sD</stringProp>
+          <stringProp name="node.sD.parent">s-NSSAI</stringProp>
+          <stringProp name="node.sD.value"></stringProp>
+        </org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="UE sends Initial UE Message" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler guiclass="org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSamplerMainGUI" testclass="org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler" testname="Send-UE sends Registration Request" enabled="true">
+          <stringProp name="TestPlan.comments">UE Sends initial UE message </stringProp>
+          <stringProp name="EndpointName">ue</stringProp>
+          <stringProp name="PayloadState">Completed</stringProp>
+          <stringProp name="protocol.direction">Send</stringProp>
+          <stringProp name="protocol.application.name">&lt;NGAP-PDU&gt;
+   &lt;initiatingMessage&gt;
+      &lt;procedureCode&gt;15&lt;/procedureCode&gt;
+      &lt;criticality&gt;ignore&lt;/criticality&gt;
+      &lt;value&gt;
+         &lt;InitialUEMessage&gt;
+            &lt;protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;85&lt;/id&gt;
+                  &lt;criticality&gt;reject&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;RAN-UE-NGAP-ID&gt;4&lt;/RAN-UE-NGAP-ID&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;38&lt;/id&gt;
+                  &lt;criticality&gt;reject&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;NAS-PDU&gt;7e004179000d0199f9070000000000000000102e04f0f0f0f0&lt;/NAS-PDU&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;121&lt;/id&gt;
+                  &lt;criticality&gt;reject&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;UserLocationInformation&gt;
+                        &lt;userLocationInformationNR&gt;
+                           &lt;nR-CGI&gt;
+                              &lt;pLMNIdentity&gt;99f907&lt;/pLMNIdentity&gt;
+                              &lt;nRCellIdentity&gt;000000000000000000000000000000000000&lt;/nRCellIdentity&gt;
+                           &lt;/nR-CGI&gt;
+                           &lt;tAI&gt;
+                              &lt;pLMNIdentity&gt;99f907&lt;/pLMNIdentity&gt;
+                              &lt;tAC&gt;000001&lt;/tAC&gt;
+                           &lt;/tAI&gt;
+                        &lt;/userLocationInformationNR&gt;
+                     &lt;/UserLocationInformation&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;90&lt;/id&gt;
+                  &lt;criticality&gt;ignore&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;RRCEstablishmentCause&gt;mo-Signalling&lt;/RRCEstablishmentCause&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+            &lt;/protocolIEs&gt;
+         &lt;/InitialUEMessage&gt;
+      &lt;/value&gt;
+   &lt;/initiatingMessage&gt;
+&lt;/NGAP-PDU&gt;
+</stringProp>
+          <stringProp name="NGAP.action">EDIT</stringProp>
+          <stringProp name="all.node.ids">NGAP-PDU;initiatingMessage;procedureCode;criticality;value;InitialUEMessage;protocolIEs;protocolIEs;id;criticality;value;RAN-UE-NGAP-ID;protocolIEs;id;criticality;value;NAS-PDU;protocolIEs;id;criticality;value;UserLocationInformation;userLocationInformationNR;nR-CGI;pLMNIdentity;nRCellIdentity;tAI;pLMNIdentity;tAC;protocolIEs;id;criticality;value;RRCEstablishmentCause</stringProp>
+          <intProp name="all.node.ids.count">34</intProp>
+          <stringProp name="node.NGAP-PDU">NGAP-PDU</stringProp>
+          <stringProp name="node.NGAP-PDU.parent"></stringProp>
+          <stringProp name="node.NGAP-PDU.value"></stringProp>
+          <stringProp name="node.initiatingMessage">initiatingMessage</stringProp>
+          <stringProp name="node.initiatingMessage.parent">NGAP-PDU</stringProp>
+          <stringProp name="node.initiatingMessage.value"></stringProp>
+          <stringProp name="node.procedureCode">procedureCode</stringProp>
+          <stringProp name="node.procedureCode.parent">initiatingMessage</stringProp>
+          <stringProp name="node.procedureCode.value"></stringProp>
+          <stringProp name="node.criticality">criticality</stringProp>
+          <stringProp name="node.criticality.parent">protocolIEs</stringProp>
+          <stringProp name="node.criticality.value"></stringProp>
+          <stringProp name="node.value">value</stringProp>
+          <stringProp name="node.value.parent">protocolIEs</stringProp>
+          <stringProp name="node.value.value"></stringProp>
+          <stringProp name="node.InitialUEMessage">InitialUEMessage</stringProp>
+          <stringProp name="node.InitialUEMessage.parent">value</stringProp>
+          <stringProp name="node.InitialUEMessage.value"></stringProp>
+          <stringProp name="node.protocolIEs">protocolIEs</stringProp>
+          <stringProp name="node.protocolIEs.parent">protocolIEs</stringProp>
+          <stringProp name="node.protocolIEs.value"></stringProp>
+          <stringProp name="node.id">id</stringProp>
+          <stringProp name="node.id.parent">protocolIEs</stringProp>
+          <stringProp name="node.id.value"></stringProp>
+          <stringProp name="node.RAN-UE-NGAP-ID">RAN-UE-NGAP-ID</stringProp>
+          <stringProp name="node.RAN-UE-NGAP-ID.parent">value</stringProp>
+          <stringProp name="node.RAN-UE-NGAP-ID.value"></stringProp>
+          <stringProp name="node.NAS-PDU">NAS-PDU</stringProp>
+          <stringProp name="node.NAS-PDU.parent">value</stringProp>
+          <stringProp name="node.NAS-PDU.value"></stringProp>
+          <stringProp name="node.UserLocationInformation">UserLocationInformation</stringProp>
+          <stringProp name="node.UserLocationInformation.parent">value</stringProp>
+          <stringProp name="node.UserLocationInformation.value"></stringProp>
+          <stringProp name="node.userLocationInformationNR">userLocationInformationNR</stringProp>
+          <stringProp name="node.userLocationInformationNR.parent">UserLocationInformation</stringProp>
+          <stringProp name="node.userLocationInformationNR.value"></stringProp>
+          <stringProp name="node.nR-CGI">nR-CGI</stringProp>
+          <stringProp name="node.nR-CGI.parent">userLocationInformationNR</stringProp>
+          <stringProp name="node.nR-CGI.value"></stringProp>
+          <stringProp name="node.pLMNIdentity">pLMNIdentity</stringProp>
+          <stringProp name="node.pLMNIdentity.parent">tAI</stringProp>
+          <stringProp name="node.pLMNIdentity.value"></stringProp>
+          <stringProp name="node.nRCellIdentity">nRCellIdentity</stringProp>
+          <stringProp name="node.nRCellIdentity.parent">nR-CGI</stringProp>
+          <stringProp name="node.nRCellIdentity.value"></stringProp>
+          <stringProp name="node.tAI">tAI</stringProp>
+          <stringProp name="node.tAI.parent">userLocationInformationNR</stringProp>
+          <stringProp name="node.tAI.value"></stringProp>
+          <stringProp name="node.tAC">tAC</stringProp>
+          <stringProp name="node.tAC.parent">tAI</stringProp>
+          <stringProp name="node.tAC.value"></stringProp>
+          <stringProp name="node.RRCEstablishmentCause">RRCEstablishmentCause</stringProp>
+          <stringProp name="node.RRCEstablishmentCause.parent">value</stringProp>
+          <stringProp name="node.RRCEstablishmentCause.value"></stringProp>
+        </org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler>
+        <hashTree/>
+        <org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler guiclass="org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSamplerMainGUI" testclass="org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler" testname="UE receives DownlinkNASTransport" enabled="true">
+          <stringProp name="TestPlan.comments">UE receives DownlinkNASTransport</stringProp>
+          <stringProp name="EndpointName">ue</stringProp>
+          <stringProp name="PayloadState">None</stringProp>
+          <stringProp name="protocol.direction">Receive</stringProp>
+          <stringProp name="protocol.application.name">&lt;NGAP-PDU&gt;
+   
+&lt;/NGAP-PDU&gt;
+</stringProp>
+          <stringProp name="NGAP.action"></stringProp>
+          <stringProp name="all.node.ids">NGAP-PDU</stringProp>
+          <intProp name="all.node.ids.count">1</intProp>
+          <stringProp name="node.NGAP-PDU">NGAP-PDU</stringProp>
+          <stringProp name="node.NGAP-PDU.parent"></stringProp>
+          <stringProp name="node.NGAP-PDU.value"></stringProp>
+        </org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler>
+        <hashTree/>
+        <org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler guiclass="org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSamplerMainGUI" testclass="org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler" testname="UE sends Res_uplinknastransport" enabled="true">
+          <stringProp name="EndpointName">ue</stringProp>
+          <stringProp name="PayloadState">Completed</stringProp>
+          <stringProp name="protocol.direction">Send</stringProp>
+          <stringProp name="protocol.application.name">&lt;NGAP-PDU&gt;
+   &lt;initiatingMessage&gt;
+      &lt;procedureCode&gt;46&lt;/procedureCode&gt;
+      &lt;criticality&gt;ignore&lt;/criticality&gt;
+      &lt;value&gt;
+         &lt;UplinkNASTransport&gt;
+            &lt;protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;10&lt;/id&gt;
+                  &lt;criticality&gt;reject&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;AMF-UE-NGAP-ID&gt;5&lt;/AMF-UE-NGAP-ID&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;85&lt;/id&gt;
+                  &lt;criticality&gt;reject&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;RAN-UE-NGAP-ID&gt;4&lt;/RAN-UE-NGAP-ID&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;38&lt;/id&gt;
+                  &lt;criticality&gt;reject&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;NAS-PDU&gt;7E00572D10217A162E1B3570DA1973273C40ADE7F9&lt;/NAS-PDU&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;121&lt;/id&gt;
+                  &lt;criticality&gt;ignore&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;UserLocationInformation&gt;
+                        &lt;userLocationInformationNR&gt;
+                           &lt;nR-CGI&gt;
+                              &lt;pLMNIdentity&gt;54F050&lt;/pLMNIdentity&gt;
+                              &lt;nRCellIdentity&gt;000000000000000000000000000000000000&lt;/nRCellIdentity&gt;
+                           &lt;/nR-CGI&gt;
+                           &lt;tAI&gt;
+                              &lt;pLMNIdentity&gt;54F050&lt;/pLMNIdentity&gt;
+                              &lt;tAC&gt;004743&lt;/tAC&gt;
+                           &lt;/tAI&gt;
+                        &lt;/userLocationInformationNR&gt;
+                     &lt;/UserLocationInformation&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+            &lt;/protocolIEs&gt;
+         &lt;/UplinkNASTransport&gt;
+      &lt;/value&gt;
+   &lt;/initiatingMessage&gt;
+&lt;/NGAP-PDU&gt;
+</stringProp>
+          <stringProp name="NGAP.action">EDIT</stringProp>
+          <stringProp name="all.node.ids">NGAP-PDU;initiatingMessage;procedureCode;criticality;value;UplinkNASTransport;protocolIEs;protocolIEs;id;criticality;value;AMF-UE-NGAP-ID;protocolIEs;id;criticality;value;RAN-UE-NGAP-ID;protocolIEs;id;criticality;value;NAS-PDU;protocolIEs;id;criticality;value;UserLocationInformation;userLocationInformationNR;nR-CGI;pLMNIdentity;nRCellIdentity;tAI;pLMNIdentity;tAC</stringProp>
+          <intProp name="all.node.ids.count">34</intProp>
+          <stringProp name="node.NGAP-PDU">NGAP-PDU</stringProp>
+          <stringProp name="node.NGAP-PDU.parent"></stringProp>
+          <stringProp name="node.NGAP-PDU.value"></stringProp>
+          <stringProp name="node.initiatingMessage">initiatingMessage</stringProp>
+          <stringProp name="node.initiatingMessage.parent">NGAP-PDU</stringProp>
+          <stringProp name="node.initiatingMessage.value"></stringProp>
+          <stringProp name="node.procedureCode">procedureCode</stringProp>
+          <stringProp name="node.procedureCode.parent">initiatingMessage</stringProp>
+          <stringProp name="node.procedureCode.value"></stringProp>
+          <stringProp name="node.criticality">criticality</stringProp>
+          <stringProp name="node.criticality.parent">protocolIEs</stringProp>
+          <stringProp name="node.criticality.value"></stringProp>
+          <stringProp name="node.value">value</stringProp>
+          <stringProp name="node.value.parent">protocolIEs</stringProp>
+          <stringProp name="node.value.value"></stringProp>
+          <stringProp name="node.UplinkNASTransport">UplinkNASTransport</stringProp>
+          <stringProp name="node.UplinkNASTransport.parent">value</stringProp>
+          <stringProp name="node.UplinkNASTransport.value"></stringProp>
+          <stringProp name="node.protocolIEs">protocolIEs</stringProp>
+          <stringProp name="node.protocolIEs.parent">protocolIEs</stringProp>
+          <stringProp name="node.protocolIEs.value"></stringProp>
+          <stringProp name="node.id">id</stringProp>
+          <stringProp name="node.id.parent">protocolIEs</stringProp>
+          <stringProp name="node.id.value"></stringProp>
+          <stringProp name="node.AMF-UE-NGAP-ID">AMF-UE-NGAP-ID</stringProp>
+          <stringProp name="node.AMF-UE-NGAP-ID.parent">value</stringProp>
+          <stringProp name="node.AMF-UE-NGAP-ID.value"></stringProp>
+          <stringProp name="node.RAN-UE-NGAP-ID">RAN-UE-NGAP-ID</stringProp>
+          <stringProp name="node.RAN-UE-NGAP-ID.parent">value</stringProp>
+          <stringProp name="node.RAN-UE-NGAP-ID.value"></stringProp>
+          <stringProp name="node.NAS-PDU">NAS-PDU</stringProp>
+          <stringProp name="node.NAS-PDU.parent">value</stringProp>
+          <stringProp name="node.NAS-PDU.value"></stringProp>
+          <stringProp name="node.UserLocationInformation">UserLocationInformation</stringProp>
+          <stringProp name="node.UserLocationInformation.parent">value</stringProp>
+          <stringProp name="node.UserLocationInformation.value"></stringProp>
+          <stringProp name="node.userLocationInformationNR">userLocationInformationNR</stringProp>
+          <stringProp name="node.userLocationInformationNR.parent">UserLocationInformation</stringProp>
+          <stringProp name="node.userLocationInformationNR.value"></stringProp>
+          <stringProp name="node.nR-CGI">nR-CGI</stringProp>
+          <stringProp name="node.nR-CGI.parent">userLocationInformationNR</stringProp>
+          <stringProp name="node.nR-CGI.value"></stringProp>
+          <stringProp name="node.pLMNIdentity">pLMNIdentity</stringProp>
+          <stringProp name="node.pLMNIdentity.parent">tAI</stringProp>
+          <stringProp name="node.pLMNIdentity.value"></stringProp>
+          <stringProp name="node.nRCellIdentity">nRCellIdentity</stringProp>
+          <stringProp name="node.nRCellIdentity.parent">nR-CGI</stringProp>
+          <stringProp name="node.nRCellIdentity.value"></stringProp>
+          <stringProp name="node.tAI">tAI</stringProp>
+          <stringProp name="node.tAI.parent">userLocationInformationNR</stringProp>
+          <stringProp name="node.tAI.value"></stringProp>
+          <stringProp name="node.tAC">tAC</stringProp>
+          <stringProp name="node.tAC.parent">tAI</stringProp>
+          <stringProp name="node.tAC.value"></stringProp>
+        </org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler>
+        <hashTree/>
+        <org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler guiclass="org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSamplerMainGUI" testclass="org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler" testname="UE Receive-Security_Cmd_downlnknastransport" enabled="true">
+          <stringProp name="TestPlan.comments">Receive-Security_Cmd_downlnknastransport</stringProp>
+          <stringProp name="EndpointName">ue</stringProp>
+          <stringProp name="PayloadState">None</stringProp>
+          <stringProp name="protocol.direction">Receive</stringProp>
+          <stringProp name="protocol.application.name">&lt;NGAP-PDU&gt;
+   
+&lt;/NGAP-PDU&gt;
+</stringProp>
+          <stringProp name="NGAP.action"></stringProp>
+          <stringProp name="all.node.ids">NGAP-PDU</stringProp>
+          <intProp name="all.node.ids.count">1</intProp>
+          <stringProp name="node.NGAP-PDU">NGAP-PDU</stringProp>
+          <stringProp name="node.NGAP-PDU.parent"></stringProp>
+          <stringProp name="node.NGAP-PDU.value"></stringProp>
+        </org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler>
+        <hashTree/>
+        <org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler guiclass="org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSamplerMainGUI" testclass="org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler" testname="UE sends UplinkNASTransport" enabled="true">
+          <stringProp name="EndpointName">ue</stringProp>
+          <stringProp name="PayloadState">Completed</stringProp>
+          <stringProp name="protocol.direction">Send</stringProp>
+          <stringProp name="protocol.application.name">&lt;NGAP-PDU&gt;
+   &lt;initiatingMessage&gt;
+      &lt;procedureCode&gt;46&lt;/procedureCode&gt;
+      &lt;criticality&gt;ignore&lt;/criticality&gt;
+      &lt;value&gt;
+         &lt;UplinkNASTransport&gt;
+            &lt;protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;10&lt;/id&gt;
+                  &lt;criticality&gt;reject&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;AMF-UE-NGAP-ID&gt;4062183431&lt;/AMF-UE-NGAP-ID&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;85&lt;/id&gt;
+                  &lt;criticality&gt;reject&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;RAN-UE-NGAP-ID&gt;1&lt;/RAN-UE-NGAP-ID&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;38&lt;/id&gt;
+                  &lt;criticality&gt;reject&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;NAS-PDU&gt;7E0400000000007E005E7700098502541090991900F07100587E00416900350154F050F0FF0101CB1F6CDF86EB76F00B40E2B3D5CF301239A109123FA86DDDEA1A4D26BB097E2A4CC443A3926FFB3EB5FBE13D8C1001032E04E0E0E0E02F0201011707E0E00000000030B0180100530101&lt;/NAS-PDU&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;121&lt;/id&gt;
+                  &lt;criticality&gt;ignore&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;UserLocationInformation&gt;
+                        &lt;userLocationInformationNR&gt;
+                           &lt;nR-CGI&gt;
+                              &lt;pLMNIdentity&gt;54F050&lt;/pLMNIdentity&gt;
+                              &lt;nRCellIdentity&gt;000000000000000000000000000000000000&lt;/nRCellIdentity&gt;
+                           &lt;/nR-CGI&gt;
+                           &lt;tAI&gt;
+                              &lt;pLMNIdentity&gt;54F050&lt;/pLMNIdentity&gt;
+                              &lt;tAC&gt;004743&lt;/tAC&gt;
+                           &lt;/tAI&gt;
+                        &lt;/userLocationInformationNR&gt;
+                     &lt;/UserLocationInformation&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+            &lt;/protocolIEs&gt;
+         &lt;/UplinkNASTransport&gt;
+      &lt;/value&gt;
+   &lt;/initiatingMessage&gt;
+&lt;/NGAP-PDU&gt;
+</stringProp>
+          <stringProp name="NGAP.action"></stringProp>
+          <stringProp name="all.node.ids">NGAP-PDU;initiatingMessage;procedureCode;criticality;value;UplinkNASTransport;protocolIEs;protocolIEs;id;criticality;value;AMF-UE-NGAP-ID;protocolIEs;id;criticality;value;RAN-UE-NGAP-ID;protocolIEs;id;criticality;value;NAS-PDU;protocolIEs;id;criticality;value;UserLocationInformation;userLocationInformationNR;nR-CGI;pLMNIdentity;nRCellIdentity;tAI;pLMNIdentity;tAC</stringProp>
+          <intProp name="all.node.ids.count">34</intProp>
+          <stringProp name="node.NGAP-PDU">NGAP-PDU</stringProp>
+          <stringProp name="node.NGAP-PDU.parent"></stringProp>
+          <stringProp name="node.NGAP-PDU.value"></stringProp>
+          <stringProp name="node.initiatingMessage">initiatingMessage</stringProp>
+          <stringProp name="node.initiatingMessage.parent">NGAP-PDU</stringProp>
+          <stringProp name="node.initiatingMessage.value"></stringProp>
+          <stringProp name="node.procedureCode">procedureCode</stringProp>
+          <stringProp name="node.procedureCode.parent">initiatingMessage</stringProp>
+          <stringProp name="node.procedureCode.value"></stringProp>
+          <stringProp name="node.criticality">criticality</stringProp>
+          <stringProp name="node.criticality.parent">protocolIEs</stringProp>
+          <stringProp name="node.criticality.value"></stringProp>
+          <stringProp name="node.value">value</stringProp>
+          <stringProp name="node.value.parent">protocolIEs</stringProp>
+          <stringProp name="node.value.value"></stringProp>
+          <stringProp name="node.UplinkNASTransport">UplinkNASTransport</stringProp>
+          <stringProp name="node.UplinkNASTransport.parent">value</stringProp>
+          <stringProp name="node.UplinkNASTransport.value"></stringProp>
+          <stringProp name="node.protocolIEs">protocolIEs</stringProp>
+          <stringProp name="node.protocolIEs.parent">protocolIEs</stringProp>
+          <stringProp name="node.protocolIEs.value"></stringProp>
+          <stringProp name="node.id">id</stringProp>
+          <stringProp name="node.id.parent">protocolIEs</stringProp>
+          <stringProp name="node.id.value"></stringProp>
+          <stringProp name="node.AMF-UE-NGAP-ID">AMF-UE-NGAP-ID</stringProp>
+          <stringProp name="node.AMF-UE-NGAP-ID.parent">value</stringProp>
+          <stringProp name="node.AMF-UE-NGAP-ID.value"></stringProp>
+          <stringProp name="node.RAN-UE-NGAP-ID">RAN-UE-NGAP-ID</stringProp>
+          <stringProp name="node.RAN-UE-NGAP-ID.parent">value</stringProp>
+          <stringProp name="node.RAN-UE-NGAP-ID.value"></stringProp>
+          <stringProp name="node.NAS-PDU">NAS-PDU</stringProp>
+          <stringProp name="node.NAS-PDU.parent">value</stringProp>
+          <stringProp name="node.NAS-PDU.value"></stringProp>
+          <stringProp name="node.UserLocationInformation">UserLocationInformation</stringProp>
+          <stringProp name="node.UserLocationInformation.parent">value</stringProp>
+          <stringProp name="node.UserLocationInformation.value"></stringProp>
+          <stringProp name="node.userLocationInformationNR">userLocationInformationNR</stringProp>
+          <stringProp name="node.userLocationInformationNR.parent">UserLocationInformation</stringProp>
+          <stringProp name="node.userLocationInformationNR.value"></stringProp>
+          <stringProp name="node.nR-CGI">nR-CGI</stringProp>
+          <stringProp name="node.nR-CGI.parent">userLocationInformationNR</stringProp>
+          <stringProp name="node.nR-CGI.value"></stringProp>
+          <stringProp name="node.pLMNIdentity">pLMNIdentity</stringProp>
+          <stringProp name="node.pLMNIdentity.parent">tAI</stringProp>
+          <stringProp name="node.pLMNIdentity.value"></stringProp>
+          <stringProp name="node.nRCellIdentity">nRCellIdentity</stringProp>
+          <stringProp name="node.nRCellIdentity.parent">nR-CGI</stringProp>
+          <stringProp name="node.nRCellIdentity.value"></stringProp>
+          <stringProp name="node.tAI">tAI</stringProp>
+          <stringProp name="node.tAI.parent">userLocationInformationNR</stringProp>
+          <stringProp name="node.tAI.value"></stringProp>
+          <stringProp name="node.tAC">tAC</stringProp>
+          <stringProp name="node.tAC.parent">tAI</stringProp>
+          <stringProp name="node.tAC.value"></stringProp>
+        </org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler>
+        <hashTree/>
+        <org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler guiclass="org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSamplerMainGUI" testclass="org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler" testname="UE Receive- Initial Context Set up Request" enabled="true">
+          <stringProp name="TestPlan.comments">UE Receive- Initial Context Set up Request</stringProp>
+          <stringProp name="EndpointName">ue</stringProp>
+          <stringProp name="PayloadState">None</stringProp>
+          <stringProp name="protocol.direction">Receive</stringProp>
+          <stringProp name="protocol.application.name">&lt;NGAP-PDU&gt;
+   
+&lt;/NGAP-PDU&gt;
+</stringProp>
+          <stringProp name="NGAP.action"></stringProp>
+          <stringProp name="all.node.ids">NGAP-PDU</stringProp>
+          <intProp name="all.node.ids.count">1</intProp>
+          <stringProp name="node.NGAP-PDU">NGAP-PDU</stringProp>
+          <stringProp name="node.NGAP-PDU.parent"></stringProp>
+          <stringProp name="node.NGAP-PDU.value"></stringProp>
+        </org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler>
+        <hashTree/>
+        <org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler guiclass="org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSamplerMainGUI" testclass="org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler" testname="UR Sends Res_InitialCtxtSetup" enabled="true">
+          <stringProp name="TestPlan.comments">UR Sends Res_InitialCtxtSetup</stringProp>
+          <stringProp name="EndpointName">ue</stringProp>
+          <stringProp name="PayloadState">Completed</stringProp>
+          <stringProp name="protocol.direction">Send</stringProp>
+          <stringProp name="protocol.application.name">&lt;NGAP-PDU&gt;
+   &lt;successfulOutcome&gt;
+      &lt;procedureCode&gt;14&lt;/procedureCode&gt;
+      &lt;criticality&gt;reject&lt;/criticality&gt;
+      &lt;value&gt;
+         &lt;InitialContextSetupResponse&gt;
+            &lt;protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;10&lt;/id&gt;
+                  &lt;criticality&gt;ignore&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;AMF-UE-NGAP-ID&gt;4062183431&lt;/AMF-UE-NGAP-ID&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;85&lt;/id&gt;
+                  &lt;criticality&gt;ignore&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;RAN-UE-NGAP-ID&gt;1&lt;/RAN-UE-NGAP-ID&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+            &lt;/protocolIEs&gt;
+         &lt;/InitialContextSetupResponse&gt;
+      &lt;/value&gt;
+   &lt;/successfulOutcome&gt;
+&lt;/NGAP-PDU&gt;
+</stringProp>
+          <stringProp name="NGAP.action"></stringProp>
+          <stringProp name="all.node.ids">NGAP-PDU;successfulOutcome;procedureCode;criticality;value;InitialContextSetupResponse;protocolIEs;protocolIEs;id;criticality;value;AMF-UE-NGAP-ID;protocolIEs;id;criticality;value;RAN-UE-NGAP-ID</stringProp>
+          <intProp name="all.node.ids.count">17</intProp>
+          <stringProp name="node.NGAP-PDU">NGAP-PDU</stringProp>
+          <stringProp name="node.NGAP-PDU.parent"></stringProp>
+          <stringProp name="node.NGAP-PDU.value"></stringProp>
+          <stringProp name="node.successfulOutcome">successfulOutcome</stringProp>
+          <stringProp name="node.successfulOutcome.parent">NGAP-PDU</stringProp>
+          <stringProp name="node.successfulOutcome.value"></stringProp>
+          <stringProp name="node.procedureCode">procedureCode</stringProp>
+          <stringProp name="node.procedureCode.parent">successfulOutcome</stringProp>
+          <stringProp name="node.procedureCode.value"></stringProp>
+          <stringProp name="node.criticality">criticality</stringProp>
+          <stringProp name="node.criticality.parent">protocolIEs</stringProp>
+          <stringProp name="node.criticality.value"></stringProp>
+          <stringProp name="node.value">value</stringProp>
+          <stringProp name="node.value.parent">protocolIEs</stringProp>
+          <stringProp name="node.value.value"></stringProp>
+          <stringProp name="node.InitialContextSetupResponse">InitialContextSetupResponse</stringProp>
+          <stringProp name="node.InitialContextSetupResponse.parent">value</stringProp>
+          <stringProp name="node.InitialContextSetupResponse.value"></stringProp>
+          <stringProp name="node.protocolIEs">protocolIEs</stringProp>
+          <stringProp name="node.protocolIEs.parent">protocolIEs</stringProp>
+          <stringProp name="node.protocolIEs.value"></stringProp>
+          <stringProp name="node.id">id</stringProp>
+          <stringProp name="node.id.parent">protocolIEs</stringProp>
+          <stringProp name="node.id.value"></stringProp>
+          <stringProp name="node.AMF-UE-NGAP-ID">AMF-UE-NGAP-ID</stringProp>
+          <stringProp name="node.AMF-UE-NGAP-ID.parent">value</stringProp>
+          <stringProp name="node.AMF-UE-NGAP-ID.value"></stringProp>
+          <stringProp name="node.RAN-UE-NGAP-ID">RAN-UE-NGAP-ID</stringProp>
+          <stringProp name="node.RAN-UE-NGAP-ID.parent">value</stringProp>
+          <stringProp name="node.RAN-UE-NGAP-ID.value"></stringProp>
+        </org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler>
+        <hashTree/>
+        <org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler guiclass="org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSamplerMainGUI" testclass="org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler" testname="UE sends UplinkNASTransport" enabled="true">
+          <stringProp name="TestPlan.comments">UE sends UplinkNASTransport</stringProp>
+          <stringProp name="EndpointName">ue</stringProp>
+          <stringProp name="PayloadState">Completed</stringProp>
+          <stringProp name="protocol.direction">Send</stringProp>
+          <stringProp name="protocol.application.name">&lt;NGAP-PDU&gt;
+   &lt;initiatingMessage&gt;
+      &lt;procedureCode&gt;46&lt;/procedureCode&gt;
+      &lt;criticality&gt;ignore&lt;/criticality&gt;
+      &lt;value&gt;
+         &lt;UplinkNASTransport&gt;
+            &lt;protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;10&lt;/id&gt;
+                  &lt;criticality&gt;reject&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;AMF-UE-NGAP-ID&gt;4062183431&lt;/AMF-UE-NGAP-ID&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;85&lt;/id&gt;
+                  &lt;criticality&gt;reject&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;RAN-UE-NGAP-ID&gt;1&lt;/RAN-UE-NGAP-ID&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;38&lt;/id&gt;
+                  &lt;criticality&gt;reject&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;NAS-PDU&gt;7E0200000000017E0043&lt;/NAS-PDU&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;121&lt;/id&gt;
+                  &lt;criticality&gt;ignore&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;UserLocationInformation&gt;
+                        &lt;userLocationInformationNR&gt;
+                           &lt;nR-CGI&gt;
+                              &lt;pLMNIdentity&gt;54F050&lt;/pLMNIdentity&gt;
+                              &lt;nRCellIdentity&gt;000000000000000000000000000000000000&lt;/nRCellIdentity&gt;
+                           &lt;/nR-CGI&gt;
+                           &lt;tAI&gt;
+                              &lt;pLMNIdentity&gt;54F050&lt;/pLMNIdentity&gt;
+                              &lt;tAC&gt;004743&lt;/tAC&gt;
+                           &lt;/tAI&gt;
+                        &lt;/userLocationInformationNR&gt;
+                     &lt;/UserLocationInformation&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+            &lt;/protocolIEs&gt;
+         &lt;/UplinkNASTransport&gt;
+      &lt;/value&gt;
+   &lt;/initiatingMessage&gt;
+&lt;/NGAP-PDU&gt;
+</stringProp>
+          <stringProp name="NGAP.action"></stringProp>
+          <stringProp name="all.node.ids">NGAP-PDU;initiatingMessage;procedureCode;criticality;value;UplinkNASTransport;protocolIEs;protocolIEs;id;criticality;value;AMF-UE-NGAP-ID;protocolIEs;id;criticality;value;RAN-UE-NGAP-ID;protocolIEs;id;criticality;value;NAS-PDU;protocolIEs;id;criticality;value;UserLocationInformation;userLocationInformationNR;nR-CGI;pLMNIdentity;nRCellIdentity;tAI;pLMNIdentity;tAC</stringProp>
+          <intProp name="all.node.ids.count">34</intProp>
+          <stringProp name="node.NGAP-PDU">NGAP-PDU</stringProp>
+          <stringProp name="node.NGAP-PDU.parent"></stringProp>
+          <stringProp name="node.NGAP-PDU.value"></stringProp>
+          <stringProp name="node.initiatingMessage">initiatingMessage</stringProp>
+          <stringProp name="node.initiatingMessage.parent">NGAP-PDU</stringProp>
+          <stringProp name="node.initiatingMessage.value"></stringProp>
+          <stringProp name="node.procedureCode">procedureCode</stringProp>
+          <stringProp name="node.procedureCode.parent">initiatingMessage</stringProp>
+          <stringProp name="node.procedureCode.value"></stringProp>
+          <stringProp name="node.criticality">criticality</stringProp>
+          <stringProp name="node.criticality.parent">protocolIEs</stringProp>
+          <stringProp name="node.criticality.value"></stringProp>
+          <stringProp name="node.value">value</stringProp>
+          <stringProp name="node.value.parent">protocolIEs</stringProp>
+          <stringProp name="node.value.value"></stringProp>
+          <stringProp name="node.UplinkNASTransport">UplinkNASTransport</stringProp>
+          <stringProp name="node.UplinkNASTransport.parent">value</stringProp>
+          <stringProp name="node.UplinkNASTransport.value"></stringProp>
+          <stringProp name="node.protocolIEs">protocolIEs</stringProp>
+          <stringProp name="node.protocolIEs.parent">protocolIEs</stringProp>
+          <stringProp name="node.protocolIEs.value"></stringProp>
+          <stringProp name="node.id">id</stringProp>
+          <stringProp name="node.id.parent">protocolIEs</stringProp>
+          <stringProp name="node.id.value"></stringProp>
+          <stringProp name="node.AMF-UE-NGAP-ID">AMF-UE-NGAP-ID</stringProp>
+          <stringProp name="node.AMF-UE-NGAP-ID.parent">value</stringProp>
+          <stringProp name="node.AMF-UE-NGAP-ID.value"></stringProp>
+          <stringProp name="node.RAN-UE-NGAP-ID">RAN-UE-NGAP-ID</stringProp>
+          <stringProp name="node.RAN-UE-NGAP-ID.parent">value</stringProp>
+          <stringProp name="node.RAN-UE-NGAP-ID.value"></stringProp>
+          <stringProp name="node.NAS-PDU">NAS-PDU</stringProp>
+          <stringProp name="node.NAS-PDU.parent">value</stringProp>
+          <stringProp name="node.NAS-PDU.value"></stringProp>
+          <stringProp name="node.UserLocationInformation">UserLocationInformation</stringProp>
+          <stringProp name="node.UserLocationInformation.parent">value</stringProp>
+          <stringProp name="node.UserLocationInformation.value"></stringProp>
+          <stringProp name="node.userLocationInformationNR">userLocationInformationNR</stringProp>
+          <stringProp name="node.userLocationInformationNR.parent">UserLocationInformation</stringProp>
+          <stringProp name="node.userLocationInformationNR.value"></stringProp>
+          <stringProp name="node.nR-CGI">nR-CGI</stringProp>
+          <stringProp name="node.nR-CGI.parent">userLocationInformationNR</stringProp>
+          <stringProp name="node.nR-CGI.value"></stringProp>
+          <stringProp name="node.pLMNIdentity">pLMNIdentity</stringProp>
+          <stringProp name="node.pLMNIdentity.parent">tAI</stringProp>
+          <stringProp name="node.pLMNIdentity.value"></stringProp>
+          <stringProp name="node.nRCellIdentity">nRCellIdentity</stringProp>
+          <stringProp name="node.nRCellIdentity.parent">nR-CGI</stringProp>
+          <stringProp name="node.nRCellIdentity.value"></stringProp>
+          <stringProp name="node.tAI">tAI</stringProp>
+          <stringProp name="node.tAI.parent">userLocationInformationNR</stringProp>
+          <stringProp name="node.tAI.value"></stringProp>
+          <stringProp name="node.tAC">tAC</stringProp>
+          <stringProp name="node.tAC.parent">tAI</stringProp>
+          <stringProp name="node.tAC.value"></stringProp>
+        </org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler>
+        <hashTree/>
+        <org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler guiclass="org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSamplerMainGUI" testclass="org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler" testname="UE sends UplinkNASTransport" enabled="true">
+          <stringProp name="TestPlan.comments">UE sends UplinkNASTransport</stringProp>
+          <stringProp name="EndpointName">ue</stringProp>
+          <stringProp name="PayloadState">Completed</stringProp>
+          <stringProp name="protocol.direction">Send</stringProp>
+          <stringProp name="protocol.application.name">&lt;NGAP-PDU&gt;
+   &lt;initiatingMessage&gt;
+      &lt;procedureCode&gt;46&lt;/procedureCode&gt;
+      &lt;criticality&gt;ignore&lt;/criticality&gt;
+      &lt;value&gt;
+         &lt;UplinkNASTransport&gt;
+            &lt;protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;10&lt;/id&gt;
+                  &lt;criticality&gt;reject&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;AMF-UE-NGAP-ID&gt;4062183431&lt;/AMF-UE-NGAP-ID&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;85&lt;/id&gt;
+                  &lt;criticality&gt;reject&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;RAN-UE-NGAP-ID&gt;1&lt;/RAN-UE-NGAP-ID&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;38&lt;/id&gt;
+                  &lt;criticality&gt;reject&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;NAS-PDU&gt;7E0200000000027E00670100312E0501C10000917B00278080211001010010810600000000830600000000000A00000D00000500001100001000001A0105120581220101250908696E7465726E6574&lt;/NAS-PDU&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;121&lt;/id&gt;
+                  &lt;criticality&gt;ignore&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;UserLocationInformation&gt;
+                        &lt;userLocationInformationNR&gt;
+                           &lt;nR-CGI&gt;
+                              &lt;pLMNIdentity&gt;54F050&lt;/pLMNIdentity&gt;
+                              &lt;nRCellIdentity&gt;000000000000000000000000000000000000&lt;/nRCellIdentity&gt;
+                           &lt;/nR-CGI&gt;
+                           &lt;tAI&gt;
+                              &lt;pLMNIdentity&gt;54F050&lt;/pLMNIdentity&gt;
+                              &lt;tAC&gt;004743&lt;/tAC&gt;
+                           &lt;/tAI&gt;
+                        &lt;/userLocationInformationNR&gt;
+                     &lt;/UserLocationInformation&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+            &lt;/protocolIEs&gt;
+         &lt;/UplinkNASTransport&gt;
+      &lt;/value&gt;
+   &lt;/initiatingMessage&gt;
+&lt;/NGAP-PDU&gt;
+</stringProp>
+          <stringProp name="NGAP.action"></stringProp>
+          <stringProp name="all.node.ids">NGAP-PDU;initiatingMessage;procedureCode;criticality;value;UplinkNASTransport;protocolIEs;protocolIEs;id;criticality;value;AMF-UE-NGAP-ID;protocolIEs;id;criticality;value;RAN-UE-NGAP-ID;protocolIEs;id;criticality;value;NAS-PDU;protocolIEs;id;criticality;value;UserLocationInformation;userLocationInformationNR;nR-CGI;pLMNIdentity;nRCellIdentity;tAI;pLMNIdentity;tAC</stringProp>
+          <intProp name="all.node.ids.count">34</intProp>
+          <stringProp name="node.NGAP-PDU">NGAP-PDU</stringProp>
+          <stringProp name="node.NGAP-PDU.parent"></stringProp>
+          <stringProp name="node.NGAP-PDU.value"></stringProp>
+          <stringProp name="node.initiatingMessage">initiatingMessage</stringProp>
+          <stringProp name="node.initiatingMessage.parent">NGAP-PDU</stringProp>
+          <stringProp name="node.initiatingMessage.value"></stringProp>
+          <stringProp name="node.procedureCode">procedureCode</stringProp>
+          <stringProp name="node.procedureCode.parent">initiatingMessage</stringProp>
+          <stringProp name="node.procedureCode.value"></stringProp>
+          <stringProp name="node.criticality">criticality</stringProp>
+          <stringProp name="node.criticality.parent">protocolIEs</stringProp>
+          <stringProp name="node.criticality.value"></stringProp>
+          <stringProp name="node.value">value</stringProp>
+          <stringProp name="node.value.parent">protocolIEs</stringProp>
+          <stringProp name="node.value.value"></stringProp>
+          <stringProp name="node.UplinkNASTransport">UplinkNASTransport</stringProp>
+          <stringProp name="node.UplinkNASTransport.parent">value</stringProp>
+          <stringProp name="node.UplinkNASTransport.value"></stringProp>
+          <stringProp name="node.protocolIEs">protocolIEs</stringProp>
+          <stringProp name="node.protocolIEs.parent">protocolIEs</stringProp>
+          <stringProp name="node.protocolIEs.value"></stringProp>
+          <stringProp name="node.id">id</stringProp>
+          <stringProp name="node.id.parent">protocolIEs</stringProp>
+          <stringProp name="node.id.value"></stringProp>
+          <stringProp name="node.AMF-UE-NGAP-ID">AMF-UE-NGAP-ID</stringProp>
+          <stringProp name="node.AMF-UE-NGAP-ID.parent">value</stringProp>
+          <stringProp name="node.AMF-UE-NGAP-ID.value"></stringProp>
+          <stringProp name="node.RAN-UE-NGAP-ID">RAN-UE-NGAP-ID</stringProp>
+          <stringProp name="node.RAN-UE-NGAP-ID.parent">value</stringProp>
+          <stringProp name="node.RAN-UE-NGAP-ID.value"></stringProp>
+          <stringProp name="node.NAS-PDU">NAS-PDU</stringProp>
+          <stringProp name="node.NAS-PDU.parent">value</stringProp>
+          <stringProp name="node.NAS-PDU.value"></stringProp>
+          <stringProp name="node.UserLocationInformation">UserLocationInformation</stringProp>
+          <stringProp name="node.UserLocationInformation.parent">value</stringProp>
+          <stringProp name="node.UserLocationInformation.value"></stringProp>
+          <stringProp name="node.userLocationInformationNR">userLocationInformationNR</stringProp>
+          <stringProp name="node.userLocationInformationNR.parent">UserLocationInformation</stringProp>
+          <stringProp name="node.userLocationInformationNR.value"></stringProp>
+          <stringProp name="node.nR-CGI">nR-CGI</stringProp>
+          <stringProp name="node.nR-CGI.parent">userLocationInformationNR</stringProp>
+          <stringProp name="node.nR-CGI.value"></stringProp>
+          <stringProp name="node.pLMNIdentity">pLMNIdentity</stringProp>
+          <stringProp name="node.pLMNIdentity.parent">tAI</stringProp>
+          <stringProp name="node.pLMNIdentity.value"></stringProp>
+          <stringProp name="node.nRCellIdentity">nRCellIdentity</stringProp>
+          <stringProp name="node.nRCellIdentity.parent">nR-CGI</stringProp>
+          <stringProp name="node.nRCellIdentity.value"></stringProp>
+          <stringProp name="node.tAI">tAI</stringProp>
+          <stringProp name="node.tAI.parent">userLocationInformationNR</stringProp>
+          <stringProp name="node.tAI.value"></stringProp>
+          <stringProp name="node.tAC">tAC</stringProp>
+          <stringProp name="node.tAC.parent">tAI</stringProp>
+          <stringProp name="node.tAC.value"></stringProp>
+        </org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler>
+        <hashTree/>
+        <org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler guiclass="org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSamplerMainGUI" testclass="org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler" testname="UE receives PDUSessionResourceSetupRequest" enabled="true">
+          <stringProp name="TestPlan.comments">UE receives PDUSessionResourceSetupRequest</stringProp>
+          <stringProp name="EndpointName">ue</stringProp>
+          <stringProp name="PayloadState">None</stringProp>
+          <stringProp name="protocol.direction">Receive</stringProp>
+          <stringProp name="protocol.application.name">&lt;NGAP-PDU&gt;
+   
+&lt;/NGAP-PDU&gt;
+</stringProp>
+          <stringProp name="NGAP.action"></stringProp>
+          <stringProp name="all.node.ids">NGAP-PDU</stringProp>
+          <intProp name="all.node.ids.count">1</intProp>
+          <stringProp name="node.NGAP-PDU">NGAP-PDU</stringProp>
+          <stringProp name="node.NGAP-PDU.parent"></stringProp>
+          <stringProp name="node.NGAP-PDU.value"></stringProp>
+        </org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler>
+        <hashTree/>
+        <org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler guiclass="org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSamplerMainGUI" testclass="org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler" testname="UE sends PDUSessionResourceSetupResponse" enabled="true">
+          <stringProp name="TestPlan.comments">UE sends PDUSessionResourceSetupResponse</stringProp>
+          <stringProp name="EndpointName">ue</stringProp>
+          <stringProp name="PayloadState">Completed</stringProp>
+          <stringProp name="protocol.direction">Send</stringProp>
+          <stringProp name="protocol.application.name">&lt;NGAP-PDU&gt;
+   &lt;successfulOutcome&gt;
+      &lt;procedureCode&gt;29&lt;/procedureCode&gt;
+      &lt;criticality&gt;reject&lt;/criticality&gt;
+      &lt;value&gt;
+         &lt;PDUSessionResourceSetupResponse&gt;
+            &lt;protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;10&lt;/id&gt;
+                  &lt;criticality&gt;ignore&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;AMF-UE-NGAP-ID&gt;4062183431&lt;/AMF-UE-NGAP-ID&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;85&lt;/id&gt;
+                  &lt;criticality&gt;ignore&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;RAN-UE-NGAP-ID&gt;1&lt;/RAN-UE-NGAP-ID&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+               &lt;protocolIEs&gt;
+                  &lt;id&gt;75&lt;/id&gt;
+                  &lt;criticality&gt;ignore&lt;/criticality&gt;
+                  &lt;value&gt;
+                     &lt;PDUSessionResourceSetupListSURes&gt;
+                        &lt;PDUSessionResourceSetupListSURes&gt;
+                           &lt;pDUSessionID&gt;5&lt;/pDUSessionID&gt;
+                           &lt;pDUSessionResourceSetupResponseTransfer&gt;
+                              &lt;dLQosFlowPerTNLInformation&gt;
+                                 &lt;uPTransportLayerInformation&gt;
+                                    &lt;gTPTunnel&gt;
+                                       &lt;transportLayerAddress&gt;10101100000101000001010101001001&lt;/transportLayerAddress&gt;
+                                       &lt;gTP-TEID&gt;00000002&lt;/gTP-TEID&gt;
+                                    &lt;/gTPTunnel&gt;
+                                 &lt;/uPTransportLayerInformation&gt;
+                                 &lt;associatedQosFlowList&gt;
+                                    &lt;associatedQosFlowList&gt;
+                                       &lt;qosFlowIdentifier&gt;8&lt;/qosFlowIdentifier&gt;
+                                    &lt;/associatedQosFlowList&gt;
+                                 &lt;/associatedQosFlowList&gt;
+                              &lt;/dLQosFlowPerTNLInformation&gt;
+                           &lt;/pDUSessionResourceSetupResponseTransfer&gt;
+                        &lt;/PDUSessionResourceSetupListSURes&gt;
+                     &lt;/PDUSessionResourceSetupListSURes&gt;
+                  &lt;/value&gt;
+               &lt;/protocolIEs&gt;
+            &lt;/protocolIEs&gt;
+         &lt;/PDUSessionResourceSetupResponse&gt;
+      &lt;/value&gt;
+   &lt;/successfulOutcome&gt;
+&lt;/NGAP-PDU&gt;
+</stringProp>
+          <stringProp name="NGAP.action"></stringProp>
+          <stringProp name="all.node.ids">NGAP-PDU;successfulOutcome;procedureCode;criticality;value;PDUSessionResourceSetupResponse;protocolIEs;protocolIEs;id;criticality;value;AMF-UE-NGAP-ID;protocolIEs;id;criticality;value;RAN-UE-NGAP-ID;protocolIEs;id;criticality;value;PDUSessionResourceSetupListSURes;PDUSessionResourceSetupListSURes;pDUSessionID;pDUSessionResourceSetupResponseTransfer;dLQosFlowPerTNLInformation;uPTransportLayerInformation;gTPTunnel;transportLayerAddress;gTP-TEID;associatedQosFlowList;associatedQosFlowList;qosFlowIdentifier</stringProp>
+          <intProp name="all.node.ids.count">33</intProp>
+          <stringProp name="node.NGAP-PDU">NGAP-PDU</stringProp>
+          <stringProp name="node.NGAP-PDU.parent"></stringProp>
+          <stringProp name="node.NGAP-PDU.value"></stringProp>
+          <stringProp name="node.successfulOutcome">successfulOutcome</stringProp>
+          <stringProp name="node.successfulOutcome.parent">NGAP-PDU</stringProp>
+          <stringProp name="node.successfulOutcome.value"></stringProp>
+          <stringProp name="node.procedureCode">procedureCode</stringProp>
+          <stringProp name="node.procedureCode.parent">successfulOutcome</stringProp>
+          <stringProp name="node.procedureCode.value"></stringProp>
+          <stringProp name="node.criticality">criticality</stringProp>
+          <stringProp name="node.criticality.parent">protocolIEs</stringProp>
+          <stringProp name="node.criticality.value"></stringProp>
+          <stringProp name="node.value">value</stringProp>
+          <stringProp name="node.value.parent">protocolIEs</stringProp>
+          <stringProp name="node.value.value"></stringProp>
+          <stringProp name="node.PDUSessionResourceSetupResponse">PDUSessionResourceSetupResponse</stringProp>
+          <stringProp name="node.PDUSessionResourceSetupResponse.parent">value</stringProp>
+          <stringProp name="node.PDUSessionResourceSetupResponse.value"></stringProp>
+          <stringProp name="node.protocolIEs">protocolIEs</stringProp>
+          <stringProp name="node.protocolIEs.parent">protocolIEs</stringProp>
+          <stringProp name="node.protocolIEs.value"></stringProp>
+          <stringProp name="node.id">id</stringProp>
+          <stringProp name="node.id.parent">protocolIEs</stringProp>
+          <stringProp name="node.id.value"></stringProp>
+          <stringProp name="node.AMF-UE-NGAP-ID">AMF-UE-NGAP-ID</stringProp>
+          <stringProp name="node.AMF-UE-NGAP-ID.parent">value</stringProp>
+          <stringProp name="node.AMF-UE-NGAP-ID.value"></stringProp>
+          <stringProp name="node.RAN-UE-NGAP-ID">RAN-UE-NGAP-ID</stringProp>
+          <stringProp name="node.RAN-UE-NGAP-ID.parent">value</stringProp>
+          <stringProp name="node.RAN-UE-NGAP-ID.value"></stringProp>
+          <stringProp name="node.PDUSessionResourceSetupListSURes">PDUSessionResourceSetupListSURes</stringProp>
+          <stringProp name="node.PDUSessionResourceSetupListSURes.parent">PDUSessionResourceSetupListSURes</stringProp>
+          <stringProp name="node.PDUSessionResourceSetupListSURes.value"></stringProp>
+          <stringProp name="node.pDUSessionID">pDUSessionID</stringProp>
+          <stringProp name="node.pDUSessionID.parent">PDUSessionResourceSetupListSURes</stringProp>
+          <stringProp name="node.pDUSessionID.value"></stringProp>
+          <stringProp name="node.pDUSessionResourceSetupResponseTransfer">pDUSessionResourceSetupResponseTransfer</stringProp>
+          <stringProp name="node.pDUSessionResourceSetupResponseTransfer.parent">PDUSessionResourceSetupListSURes</stringProp>
+          <stringProp name="node.pDUSessionResourceSetupResponseTransfer.value"></stringProp>
+          <stringProp name="node.dLQosFlowPerTNLInformation">dLQosFlowPerTNLInformation</stringProp>
+          <stringProp name="node.dLQosFlowPerTNLInformation.parent">pDUSessionResourceSetupResponseTransfer</stringProp>
+          <stringProp name="node.dLQosFlowPerTNLInformation.value"></stringProp>
+          <stringProp name="node.uPTransportLayerInformation">uPTransportLayerInformation</stringProp>
+          <stringProp name="node.uPTransportLayerInformation.parent">dLQosFlowPerTNLInformation</stringProp>
+          <stringProp name="node.uPTransportLayerInformation.value"></stringProp>
+          <stringProp name="node.gTPTunnel">gTPTunnel</stringProp>
+          <stringProp name="node.gTPTunnel.parent">uPTransportLayerInformation</stringProp>
+          <stringProp name="node.gTPTunnel.value"></stringProp>
+          <stringProp name="node.transportLayerAddress">transportLayerAddress</stringProp>
+          <stringProp name="node.transportLayerAddress.parent">gTPTunnel</stringProp>
+          <stringProp name="node.transportLayerAddress.value"></stringProp>
+          <stringProp name="node.gTP-TEID">gTP-TEID</stringProp>
+          <stringProp name="node.gTP-TEID.parent">gTPTunnel</stringProp>
+          <stringProp name="node.gTP-TEID.value"></stringProp>
+          <stringProp name="node.associatedQosFlowList">associatedQosFlowList</stringProp>
+          <stringProp name="node.associatedQosFlowList.parent">associatedQosFlowList</stringProp>
+          <stringProp name="node.associatedQosFlowList.value"></stringProp>
+          <stringProp name="node.qosFlowIdentifier">qosFlowIdentifier</stringProp>
+          <stringProp name="node.qosFlowIdentifier.parent">associatedQosFlowList</stringProp>
+          <stringProp name="node.qosFlowIdentifier.value"></stringProp>
+        </org.apache.jmeter.protocol.ngap.sampler.gui.NGAPSampler>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
