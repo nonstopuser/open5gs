@@ -33,8 +33,10 @@ services:
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - /tmp/.docker.Xauthority:/tmp/.docker.Xauthority
+      - /home/student/test/5gs_ngap:/opt/simulap_tests/regression/5gs_ngap
 #    network_mode: "host"
-    entrypoint: /bin/bash -c "tail -f /dev/null"
+    entrypoint: /bin/bash -c "sed 's/ue_ip/'$(hostname -i)'/' /opt/simulap_tests/regression/5gs_ngap/*.jmx
+                && tail -f /dev/null"
 
   open5gs:
 #    network_mode: "host"

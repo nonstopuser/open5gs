@@ -38,12 +38,14 @@ deploy-docker-compose:
     - scp openms/docker/docker-compose.yml ${DEV_USER}@${VM_IP_ADDRESS}:/home/${DEV_USER}/docker-compose.yml
     - scp openms/webui/mongo-init.js ${DEV_USER}@${VM_IP_ADDRESS}:/home/${DEV_USER}/mongo-init.js
     - scp openms/monitoring/prometheus.yml ${DEV_USER}@${VM_IP_ADDRESS}:/home/${DEV_USER}/prometheus.yml
+    - scp -r openms/tests ${DEV_USER}@${VM_IP_ADDRESS}:/home/${DEV_USER}/tests
     - > 
       ssh ${DEV_USER}@${VM_IP_ADDRESS}
       "export "DEV_USER=${DEV_USER}";
       export "CI_REGISTRY_USER=${CI_REGISTRY_USER}";
       export "CI_REGISTRY_PASSWORD=${CI_REGISTRY_PASSWORD}";
       docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD 
+      && touch /tmp/.docker.Xauthority
       && xauth list $DISPLAY | sed -e "s/$HOSTNAME/jmeter/" | xargs xauth -f /tmp/.docker.Xauthority add
       && docker compose pull
       && docker compose up --detach --force-recreate --remove-orphans webui test grafana"
