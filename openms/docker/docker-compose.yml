@@ -4,8 +4,8 @@ services:
   mongodb:
     image: mongo
     container_name: mongodb
-    expose:
-      - '27017'
+    ports:
+      - '27017:27017'
     restart: unless-stopped
     volumes:
       - mongodb:/data/db
