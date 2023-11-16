@@ -436,7 +436,7 @@
         <stringProp name="numberOfOutboundStream"></stringProp>
         <stringProp name="pathMaxRetrans"></stringProp>
         <stringProp name="remotePort">38412</stringProp>
-        <stringProp name="remotePrimaryIpaddress">open5gs</stringProp>
+        <stringProp name="remotePrimaryIpaddress">open5gs-run</stringProp>
         <stringProp name="remoteSecondaryIpaddress"></stringProp>
         <stringProp name="rtoAlpha"></stringProp>
         <stringProp name="rtoBeta"></stringProp>
