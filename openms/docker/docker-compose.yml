@@ -4,8 +4,8 @@ services:
   mongodb:
     image: mongo
     container_name: mongodb
-    ports:
-      - '27017:27017'
+    expose:
+      - '27017'
     restart: unless-stopped
     volumes:
       - mongodb:/data/db
@@ -42,8 +42,6 @@ services:
       - NET_ADMIN
     devices:
       - "/dev/net/tun:/dev/net/tun"
-    ports:
-      - "38412:38412/sctp"
     restart: unless-stopped
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=0
