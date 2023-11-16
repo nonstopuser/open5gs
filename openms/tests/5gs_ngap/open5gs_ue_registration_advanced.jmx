@@ -446,7 +446,7 @@
         <stringProp name="secondaryIp"></stringProp>
         <stringProp name="simulatedEndpoint">NO</stringProp>
         <stringProp name="validCookieLife"></stringProp>
-        <stringProp name="primaryIp">jmeter</stringProp>
+        <stringProp name="primaryIp">ue_ip</stringProp>
         <stringProp name="port">5333</stringProp>
       </org.apache.jmeter.protocol.sctp.config.SCTPConfigElement>
       <hashTree/>
